@@ -2,4 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/mlaursen/eslint-config/compare/v0.0.1...v0.0.2) (2020-10-12)
+
+
+### Bug Fixes
+
+* eslint rules to better match my expectations ([f05dddb](https://github.com/mlaursen/eslint-config/commit/f05dddb248ec1733d5e39381aeeab2359a1f93d8))
+
 ### 0.0.1 (2020-10-12)
