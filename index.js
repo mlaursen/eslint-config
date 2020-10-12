@@ -36,15 +36,17 @@ module.exports = {
     'no-restricted-globals': ['error', 'isFinite', 'isNaN'].concat(
       confusingBrowserGlobals
     ),
+
+    // too many false positives with aliases/root dirs
+    'import/no-unresolved': 0,
   },
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx'],
-      extends: [
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-      ],
+      extends: ['plugin:@typescript-eslint/recommended'],
       rules: {
+        'react/prop-types': 0,
+
         // I prefer shorthand syntax
         '@typescript-eslint/array-type': ['error', { default: 'array' }],
 
@@ -69,6 +71,9 @@ module.exports = {
         '@typescript-eslint/prefer-reduce-type-parameter': 'error',
 
         '@typescript-eslint/prefer-ts-expect-error': 'error',
+
+        // not a big fan of requiring unknown objects to require the index signature
+        '@typescript-eslint/ban-types': 0,
       },
     },
     {
@@ -87,6 +92,7 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 0,
         '@typescript-eslint/no-empty-function': 0,
         '@typescript-eslint/ban-ts-comment': 0,
+        '@typescript-eslint/no-empty-function': 0,
 
         'jsx-a11y/no-autofocus': 0,
         'jsx-a11y/no-static-element-interactions': 0,
