@@ -33,6 +33,8 @@ module.exports = {
     },
   },
   rules: {
+    'no-console': 'warn',
+
     'no-restricted-globals': ['error', 'isFinite', 'isNaN'].concat(
       confusingBrowserGlobals
     ),
@@ -47,6 +49,9 @@ module.exports = {
       rules: {
         'react/prop-types': 0,
 
+        // have to disable since it can report incorrect errors
+        'no-empty-function': 0,
+
         // I prefer shorthand syntax
         '@typescript-eslint/array-type': ['error', { default: 'array' }],
 
@@ -56,8 +61,9 @@ module.exports = {
           'interface',
         ],
 
-        // Allow expressions to work with react hooks. Annoying to have to typedef each arrow
-        // function in a useEffect or useCallback when it can be derived.
+        // Allow expressions to work with react hooks. Annoying to have to
+        // typedef each arrow function in a `useEffect` or `useCallback` when
+        // it can be derived.
         '@typescript-eslint/explicit-function-return-type': [
           'error',
           {
@@ -67,13 +73,21 @@ module.exports = {
           },
         ],
 
-        // I don't like type casting
-        '@typescript-eslint/prefer-reduce-type-parameter': 'error',
-
-        '@typescript-eslint/prefer-ts-expect-error': 'error',
-
         // not a big fan of requiring unknown objects to require the index signature
         '@typescript-eslint/ban-types': 0,
+
+        // This is a "better" version of the `noUnusedLocals` and
+        // `noUnusedParameters` from the tsconfig.json since it can catch
+        // unused vars in rest parameters that weren't meant to be omitted. I
+        // must manually rename to be _name so I know it was intentionally
+        // omitted
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+          },
+        ],
       },
     },
     {
@@ -100,6 +114,7 @@ module.exports = {
         'jsx-a11y/control-has-associated-label': 0,
 
         'react/prop-types': 0,
+        'react/display-name': 0,
         'react/prefer-stateless-function': 0,
       },
     },
