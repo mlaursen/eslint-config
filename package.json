@@ -6,7 +6,9 @@
   "repository": "https://github.com/mlaursen/eslint-config.git",
   "author": "Mikkel Laursen <mlaursen03@gmail.com>",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepublishOnly": "npm run standard-version && git push --follow-tags origin main"
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
