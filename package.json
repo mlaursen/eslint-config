@@ -7,7 +7,7 @@
   "author": "Mikkel Laursen <mlaursen03@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "npm run standard-version && git push --follow-tags origin main"
+    "prepublishOnly": "standard-version && git push --follow-tags origin main"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.4.0",
