@@ -96,8 +96,12 @@ module.exports = {
       },
     },
     {
-      files: ['**/__tests__/**', '**/*.test.*'],
-      extends: ['plugin:jest/recommended'],
+      files: [
+        'src/setupTests.js',
+        'src/setupTests.ts',
+        '**/__tests__/**',
+        '**/*.test.*',
+      ],
       env: {
         jest: true,
       },
@@ -122,6 +126,10 @@ module.exports = {
         'react/display-name': 0,
         'react/prefer-stateless-function': 0,
       },
+    },
+    {
+      files: ['**/__tests__/**', '**/*.test.*'],
+      extends: ['plugin:jest/recommended'],
     },
   ],
 };
