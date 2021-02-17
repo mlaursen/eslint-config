@@ -1,6 +1,6 @@
 {
   "name": "@mlaursen/eslint-config",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An eslint config used by mlaursen for most projects.",
   "main": "index.js",
   "repository": "https://github.com/mlaursen/eslint-config.git",

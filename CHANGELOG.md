@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/mlaursen/eslint-config/compare/v0.0.7...v0.0.8) (2021-02-17)
+
+
+### Bug Fixes
+
+* **javascript:** fixed parserOptions for projects that still use javascript ([b680b2a](https://github.com/mlaursen/eslint-config/commit/b680b2a223e2da7cb7a1efb0e9bc66ed72ebb03c))
+
 ## [0.0.7](https://github.com/mlaursen/eslint-config/compare/v0.0.6...v0.0.7) (2021-02-11)
 
 
@@ -101,7 +108,3 @@ All notable changes to this project will be documented in this file. See [standa
 
 * initial config ([30cde0d](https://github.com/mlaursen/eslint-config/commit/30cde0df601f324ffb0c50705dc62980bd1d5721))
 * Initial commit ([6baa031](https://github.com/mlaursen/eslint-config/commit/6baa03114ed6f78d86d23dd50dc0e0bea63bf754))
-
-
-
-
