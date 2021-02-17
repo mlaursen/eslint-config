@@ -10,7 +10,7 @@
     "prepublishOnly": "standard-version && git push --follow-tags origin main"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "confusing-browser-globals": "^1.0.9",
     "eslint-config-prettier": "^7.0.0",
