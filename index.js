@@ -5,9 +5,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
-    ecmaFeatures: {
-      modules: true,
-    },
   },
   extends: [
     'eslint:recommended',
@@ -22,6 +19,7 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'jest', 'jsx-a11y', 'react-hooks'],
   env: {
+    es6: true,
     node: true,
     browser: true,
   },
