@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/mlaursen/eslint-config/compare/v0.0.8...v0.0.9) (2021-02-17)
+
+
+### Features
+
+* updated setupTests files to be considered a test file ([cf0bf34](https://github.com/mlaursen/eslint-config/commit/cf0bf344662b0622fac894dfa2e828f4b2b81d4b))
+
+
+### Bug Fixes
+
+* **javascript:** fixed missing globals like Set ([91b34e2](https://github.com/mlaursen/eslint-config/commit/91b34e2f1e6251300a82e9ff23e7b91275201e06))
+
 ### [0.0.8](https://github.com/mlaursen/eslint-config/compare/v0.0.7...v0.0.8) (2021-02-17)
 
 
