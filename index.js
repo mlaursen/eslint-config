@@ -131,5 +131,20 @@ module.exports = {
       files: ['**/__tests__/**', '**/*.test.*'],
       extends: ['plugin:jest/recommended'],
     },
+    {
+      files: ['**/*.js', '**/*.jsx'],
+      rules: {
+        'no-unused-vars': [
+          'error',
+          {
+            vars: 'all',
+            varsIgnorePattern: '^_',
+            args: 'after-used',
+            varsIgnorePattern: '^_',
+            ignoreRestSiblings: true,
+          },
+        ],
+      },
+    },
   ],
 };
