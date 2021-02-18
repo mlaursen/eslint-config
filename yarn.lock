@@ -38,10 +38,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@mlaursen/changelog-preset@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@mlaursen/changelog-preset/-/changelog-preset-0.0.1.tgz#24d91f8e5b73f18be6ae851a470bacb371d9ffaa"
-  integrity sha512-4tUHp7DfpYr4BGn47PUs2SrDWuLosoEoRjHf/hR6Ko3rpgjjrIntdMqZ2vHaVeXojWOUS+iK7DPNst9W0QeNcg==
+"@mlaursen/changelog-preset@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@mlaursen/changelog-preset/-/changelog-preset-1.0.0.tgz#a7dadf0621db4529f0fbdd223dba395ec1b85c3c"
+  integrity sha512-/ccuNe6jTU2EmM+44c+HmyjnpTix4KRxrDL0Xc4oNOoiUxMqnsQVKYKvqRdU72qxMVuHVZW8kBgOzUsBWeGwYQ==
   dependencies:
     "@types/conventional-changelog" "^3.1.0"
     "@types/conventional-changelog-core" "^4.1.1"
