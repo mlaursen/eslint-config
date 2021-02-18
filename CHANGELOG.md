@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/mlaursen/eslint-config/compare/v0.0.9...v1.0.0) (2021-02-18)
+
+
+### Features
+
+* **javascript:** updated no-unused-vars for ignore patterns and ignore object spread ([abd7a85](https://github.com/mlaursen/eslint-config/commit/abd7a85871f7f5efad84bac043c431d897c8d601))
+
 ### [0.0.9](https://github.com/mlaursen/eslint-config/compare/v0.0.8...v0.0.9) (2021-02-17)
 
 
