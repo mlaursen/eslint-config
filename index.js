@@ -17,7 +17,7 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:jsx-a11y/recommended',
   ],
-  plugins: ['@typescript-eslint', 'jest', 'jsx-a11y', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'jest', 'jsx-a11y', 'react-hooks', 'tsdoc'],
   env: {
     es6: true,
     node: true,
@@ -52,6 +52,9 @@ module.exports = {
       files: ['**/*.ts', '**/*.tsx'],
       extends: ['plugin:@typescript-eslint/recommended'],
       rules: {
+        // I want correct tsdoc syntax
+        'tsdoc/syntax': 'warn',
+
         'react/prop-types': 0,
 
         // have to disable since it can report incorrect errors
