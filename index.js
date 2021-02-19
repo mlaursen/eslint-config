@@ -3,7 +3,7 @@ const confusingBrowserGlobals = require('confusing-browser-globals');
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 2018,
     sourceType: 'module',
   },
   extends: [
