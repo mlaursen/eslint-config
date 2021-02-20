@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/mlaursen/eslint-config/compare/v1.0.0...v1.1.0) (2021-02-20)
+
+
+### Features
+
+* **typescript:** default to warn for invalid tsdoc ([a3dd478](https://github.com/mlaursen/eslint-config/commit/a3dd478a89c7cf89937d386c5938e7d483455deb))
+* updated ecmaVersion from 6 to 2018 ([74f1c88](https://github.com/mlaursen/eslint-config/commit/74f1c88d53ad3f40dbd90b86cbd7438b8a4fab86))
+
 ## [1.0.0](https://github.com/mlaursen/eslint-config/compare/v0.0.9...v1.0.0) (2021-02-18)
 
 
