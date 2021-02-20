@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@mlaursen/changelog-preset": "^1.0.0",
-    "standard-version": "^9.0.0"
+    "standard-version": "^9.1.1"
   },
   "peerDependencies": {
     "eslint": ">= 7.10.0",
