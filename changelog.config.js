@@ -13,8 +13,14 @@ module.exports = createConfig({
   ),
   ignoreDeps: false,
   getCommitType: (commit) => {
-    if ((commit.scope || '').includes('deps')) {
+    const { scope = '' } = commit;
+    if (scope === 'deps') {
       return 'Dependencies';
+    }
+
+    if (scope === 'dev-deps') {
+      // don't include dev-deps
+      return '';
     }
 
     return defaultGetCommitType(commit);
