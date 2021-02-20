@@ -133,6 +133,10 @@ module.exports = {
     {
       files: ['**/__tests__/**', '**/*.test.*'],
       extends: ['plugin:jest/recommended'],
+      rules: {
+        // it's valid to do @jest-environment or other things in tests
+        'tsdoc/syntax': 0,
+      },
     },
     {
       files: ['**/*.js', '**/*.jsx'],
