@@ -10,12 +10,11 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'prettier',
-    'prettier/@typescript-eslint',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
     'plugin:jsx-a11y/recommended',
+    'prettier',
   ],
   plugins: ['@typescript-eslint', 'jest', 'jsx-a11y', 'react-hooks', 'tsdoc'],
   env: {
