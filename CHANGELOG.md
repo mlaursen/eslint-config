@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/mlaursen/eslint-config/compare/v1.1.1...v1.1.2) (2021-02-27)
+
+
+### Bug Fixes
+
+* no longer show warning if react isn't used in the project ([e405bbf](https://github.com/mlaursen/eslint-config/commit/e405bbf7f6517aefd7120ddff3903436d2e9c10b))
+
 ### [1.1.1](https://github.com/mlaursen/eslint-config/compare/v1.1.0...v1.1.1) (2021-02-20)
 
 
