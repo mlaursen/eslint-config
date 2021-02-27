@@ -1,5 +1,11 @@
 const confusingBrowserGlobals = require('confusing-browser-globals');
 
+let react = false;
+try {
+  require.resolve('react');
+  react = true;
+} catch (e) {}
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -33,7 +39,7 @@ module.exports = {
       },
     },
     react: {
-      version: 'detect',
+      version: react ? 'detect' : '17.0.0',
     },
   },
   rules: {
