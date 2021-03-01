@@ -54,9 +54,9 @@
   integrity sha512-/8J+4DdvexBH1Qh1yR8VZ6bPay2DL/TDdmSIypAa3dAghJzsdaiZG8COvzpYIML6HV2UVN0g4qbuqzjG4YKgWg==
 
 "@mlaursen/changelog-preset@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@mlaursen/changelog-preset/-/changelog-preset-1.0.0.tgz#a7dadf0621db4529f0fbdd223dba395ec1b85c3c"
-  integrity sha512-/ccuNe6jTU2EmM+44c+HmyjnpTix4KRxrDL0Xc4oNOoiUxMqnsQVKYKvqRdU72qxMVuHVZW8kBgOzUsBWeGwYQ==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@mlaursen/changelog-preset/-/changelog-preset-1.1.0.tgz#42de045f5449518442f935e6b34166c448c3991d"
+  integrity sha512-cty4V5vkb4VdXBgwSf385T3cUmLzh8O0X9Ij6RO+5cRrc01hTBpKIpP9JQHpiKQYQ9/WtH0D2POMKbrYqM49KQ==
   dependencies:
     "@types/conventional-changelog" "^3.1.0"
     "@types/conventional-changelog-core" "^4.1.1"
