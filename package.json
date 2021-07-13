@@ -10,8 +10,8 @@
     "release": "standard-version && npm publish && git push --follow-tags origin main"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
     "confusing-browser-globals": "^1.0.9",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-import": "^2.22.1",
@@ -31,5 +31,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "resolutions": {
+    "trim-newlines": "3.0.1"
   }
 }
