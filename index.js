@@ -1,9 +1,11 @@
 const confusingBrowserGlobals = require('confusing-browser-globals');
 
 let react = false;
+let isNewJsx = false;
 try {
   require.resolve('react');
   react = true;
+  isNewJsx = parseInt(require('react').version, 10) > 16;
 } catch (e) {}
 
 module.exports = {
@@ -16,12 +18,13 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    isNewJsx && 'plugin:react/jsx-runtime',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
     'plugin:jsx-a11y/recommended',
     'prettier',
-  ],
+  ].filter(Boolean),
   plugins: ['@typescript-eslint', 'jest', 'jsx-a11y', 'react-hooks', 'tsdoc'],
   env: {
     es6: true,
