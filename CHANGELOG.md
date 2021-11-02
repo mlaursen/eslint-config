@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.8](https://github.com/mlaursen/eslint-config/compare/v1.1.7...v1.1.8) (2021-11-02)
+
+
+### Bug Fixes
+
+* **react:** added react/jsx-runtime for new jsx-transform ([9ad5498](https://github.com/mlaursen/eslint-config/commit/9ad5498206442d848e8a3af5079a7519f2880d34))
+
 ### [1.1.7](https://github.com/mlaursen/eslint-config/compare/v1.1.6...v1.1.7) (2021-11-02)
 
 ### [1.1.6](https://github.com/mlaursen/eslint-config/compare/v1.1.5...v1.1.6) (2021-10-12)
