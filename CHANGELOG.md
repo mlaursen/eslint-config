@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-0](https://github.com/mlaursen/eslint-config/compare/v1.1.8...v1.2.0-0) (2021-11-21)
+
+
+### Features
+
+* Bump all dependencies to latest ([be88c1a](https://github.com/mlaursen/eslint-config/commit/be88c1a18022304d6f71e3dcd59e06e0af2a681e))
+
 ### [1.1.8](https://github.com/mlaursen/eslint-config/compare/v1.1.7...v1.1.8) (2021-11-02)
 
 
