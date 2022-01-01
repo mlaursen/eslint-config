@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/mlaursen/eslint-config/compare/v1.2.0...v1.3.0) (2022-01-01)
+
+
+### Features
+
+* **deps:** bump all dependencies to latest ([f995232](https://github.com/mlaursen/eslint-config/commit/f99523225f5df1aa8e2af6540ffa8f3f07563df1))
+
+
+### Bug Fixes
+
+* Add peerDependenciesMeta to package.json ([03dcd3d](https://github.com/mlaursen/eslint-config/commit/03dcd3da67cb751c53b8e4367188e4119f8b2e04))
+* Update eslint peerDependency to require v8.0.0 ([c0a593e](https://github.com/mlaursen/eslint-config/commit/c0a593ea8b2ee26287d3f307915381d229ed526c))
+
 ## [1.2.0](https://github.com/mlaursen/eslint-config/compare/v1.1.8...v1.2.0) (2021-11-21)
 
 
