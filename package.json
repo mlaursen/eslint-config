@@ -10,14 +10,14 @@
     "release": "standard-version && npm publish && git push --follow-tags origin main"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "confusing-browser-globals": "^1.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "confusing-browser-globals": "^1.0.11",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jest": "^25.2.4",
+    "eslint-plugin-jest": "^25.3.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-tsdoc": "^0.2.14"
   },
