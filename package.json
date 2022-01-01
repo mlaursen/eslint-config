@@ -9,6 +9,13 @@
   "scripts": {
     "release": "standard-version && npm publish && git push --follow-tags origin main"
   },
+  "bugs": {
+    "url": "https://github.com/mlaursen/eslint-config/issues"
+  },
+  "keywords": [
+    "eslint",
+    "typescript"
+  ],
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
