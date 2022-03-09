@@ -1,0 +1,7 @@
+.prettierrc
+.versionrc.js
+changelog.config.js
+tsconfig.json
+tsconfig.node.json
+scripts/
+test/
