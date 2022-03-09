@@ -64,6 +64,8 @@ module.exports = {
 
     // too many false positives with aliases/root dirs
     'import/no-unresolved': 0,
+
+    curly: 'error',
   },
   overrides: [
     {
