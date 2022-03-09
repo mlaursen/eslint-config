@@ -2,10 +2,20 @@ const confusingBrowserGlobals = require('confusing-browser-globals');
 
 let react = false;
 let isNewJsx = false;
+let isTypescript38 = false;
 try {
   require.resolve('react');
   react = true;
   isNewJsx = parseInt(require('react').version, 10) > 16;
+} catch (e) {}
+try {
+  const { version } = require('typescript');
+  const [majorString, minorString] = version.split('.');
+  const major = parseInt(majorString, 10);
+  const minor = parseInt(minorString, 10);
+  if (!Number.isNaN(major) && !Number.isNaN(minor)) {
+    isTypescript38 = major > 3 || (major === 3 && minor > 8);
+  }
 } catch (e) {}
 
 module.exports = {
@@ -104,6 +114,10 @@ module.exports = {
             varsIgnorePattern: '^_',
           },
         ],
+
+        '@typescript-eslint/consistent-type-imports': isTypescript38
+          ? ['error']
+          : 'off',
       },
     },
     {
