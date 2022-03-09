@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/mlaursen/eslint-config/compare/v1.4.0...v1.5.0) (2022-03-09)
+
+
+### Features
+
+* force braces ([f6d3f69](https://github.com/mlaursen/eslint-config/commit/f6d3f69cb8644746f7db8e6d562fbdd3a20c8d19))
+* Force consistent type imports for typescript 3.8 or greater ([880217f](https://github.com/mlaursen/eslint-config/commit/880217fb7ad258acc6601218bb649c0928d97ade))
+* Upgrade eslint dependencies to latest ([7551d04](https://github.com/mlaursen/eslint-config/commit/7551d0457be41ca3844a35b45a1eb11b9a510ffc))
+
 ## [1.4.0](https://github.com/mlaursen/eslint-config/compare/v1.3.0...v1.4.0) (2022-01-11)
 
 
