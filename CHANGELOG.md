@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/mlaursen/eslint-config/compare/v1.5.0...v1.6.0) (2022-03-24)
+
+
+### Features
+
+* **typescript:** disable @typescript-eslint/consistent-type-imports ([1720116](https://github.com/mlaursen/eslint-config/commit/17201169a3a454901b69226312a0f29174f876a5))
+
 ## [1.5.0](https://github.com/mlaursen/eslint-config/compare/v1.4.0...v1.5.0) (2022-03-09)
 
 
