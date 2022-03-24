@@ -5,8 +5,12 @@ A reusable eslint config that I use for most of my projects.
 ## Usage
 
 ```js
-module.exports = require("@mlaursen/eslint-config");
+module.exports = {
+  extends: "@mlaursen/eslint-config",
+};
 ```
+
+## Additional Type Checking
 
 Or if I want to do additional rules and strict type checking linting rules:
 
@@ -23,7 +27,9 @@ module.exports = {
   overrides: [
     {
       files: ["**/*.ts", "**/*.tsx"],
-      extends: ["@typescript-eslint/recommended-requiring-type-checking"],
+      extends: [
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      ],
     },
     // any custom overrides for this project
   ],
