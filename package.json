@@ -11,6 +11,9 @@
     "run-script": "ts-node -T -P tsconfig.node.json",
     "release": "yarn run-script scripts/release.ts"
   },
+  "files": [
+    "index.js"
+  ],
   "bugs": {
     "url": "https://github.com/mlaursen/eslint-config/issues"
   },
