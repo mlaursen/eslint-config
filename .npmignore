@@ -1,3 +1,4 @@
+.env.github
 .prettierrc
 .versionrc.js
 changelog.config.js
