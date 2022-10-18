@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/mlaursen/eslint-config/compare/v1.8.0...v1.9.0) (2022-10-18)
+
+
+### Features
+
+* bump dependencies to latest ([04d3386](https://github.com/mlaursen/eslint-config/commit/04d3386f0c4744381d043e6dfd8e43c01cb56ae9))
+
+
+### Bug Fixes
+
+* **npm:** do not publish .env.github -_- ([587d4a7](https://github.com/mlaursen/eslint-config/commit/587d4a7adccef9bf878de0b89ae5b84b1c22133b))
+
 ## [1.8.0](https://github.com/mlaursen/eslint-config/compare/v1.7.0...v1.8.0) (2022-08-23)
 
 
