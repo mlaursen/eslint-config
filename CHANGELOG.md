@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/mlaursen/eslint-config/compare/v1.9.0...v2.0.0) (2022-11-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* require node 16 and convert to module
+
+### build
+
+* require node 16 and convert to module ([a396811](https://github.com/mlaursen/eslint-config/commit/a396811a7f3a8bf83dbf9419bc66736606bbed65))
+
 ## [1.9.0](https://github.com/mlaursen/eslint-config/compare/v1.8.0...v1.9.0) (2022-10-18)
 
 
