@@ -96,7 +96,7 @@ A token can be created at:
     process.exit(1);
   }
 
-  loggedCommand(`yarn standard-version${type}${prerelease}`);
+  loggedCommand(`pnpm standard-version${type}${prerelease}`);
 
   const { version } = JSON.parse(
     readFileSync(join(process.cwd(), "package.json"), "utf8")
@@ -114,7 +114,7 @@ A token can be created at:
       name: "confirmed",
       message: `Open the authenticator app to get a one-time password and run the following command:
 
-npm publish --otp
+pnpm publish --otp
 `,
     },
   ]);
