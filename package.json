@@ -1,5 +1,6 @@
 {
   "name": "@mlaursen/eslint-config",
+  "type": "module",
   "version": "1.9.0",
   "description": "An eslint config used by mlaursen for most projects.",
   "main": "index.js",
@@ -7,12 +8,16 @@
   "author": "Mikkel Laursen <mlaursen03@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "eslint -c index.js \"test/**/*.{js,jsx,ts,tsx}\"",
-    "run-script": "ts-node -T -P tsconfig.node.json",
+    "test": "eslint -c index.cjs \"test/**/*.{js,jsx,ts,tsx}\"",
+    "run-script": "ts-node -T -P tsconfig.json",
     "release": "yarn run-script scripts/release.ts"
   },
+  "engines": {
+    "node": ">=16"
+  },
+  "engineStrict": true,
   "files": [
-    "index.js"
+    "index.cjs"
   ],
   "bugs": {
     "url": "https://github.com/mlaursen/eslint-config/issues"
