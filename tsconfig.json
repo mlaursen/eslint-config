@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "esnext",
+    "module": "commonjs",
     "strict": true,
     "declaration": true,
     "esModuleInterop": true,
@@ -11,8 +11,5 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["dom", "dom.iterable", "esnext"]
-  },
-  "ts-node": {
-    "esm": true
   }
 }
