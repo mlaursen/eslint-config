@@ -47,7 +47,7 @@ module.exports = {
   },
   rules: {
     'no-console': 'warn',
-    'no-use-before-define': 'warning',
+    'no-use-before-define': 'warn',
 
     'no-restricted-globals': ['error', 'isFinite', 'isNaN'].concat(
       confusingBrowserGlobals
@@ -107,13 +107,13 @@ module.exports = {
             varsIgnorePattern: '^_',
           },
         ],
-      },
 
-      'no-use-before-define': 'off',
-      '@typescript-eslint/no-use-before-define': [
-        'warn',
-        { ignoreTypeReferences: true },
-      ],
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': [
+          'warn',
+          { ignoreTypeReferences: true },
+        ],
+      },
     },
     {
       files: [
