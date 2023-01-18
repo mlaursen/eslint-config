@@ -47,13 +47,14 @@ module.exports = {
   },
   rules: {
     'no-console': 'warn',
+    'no-use-before-define': 'warning',
 
     'no-restricted-globals': ['error', 'isFinite', 'isNaN'].concat(
       confusingBrowserGlobals
     ),
 
     // too many false positives with aliases/root dirs
-    'import/no-unresolved': 0,
+    'import/no-unresolved': 'off',
 
     curly: 'error',
   },
@@ -65,10 +66,10 @@ module.exports = {
         // I want correct tsdoc syntax
         'tsdoc/syntax': 'warn',
 
-        'react/prop-types': 0,
+        'react/prop-types': 'off',
 
         // have to disable since it can report incorrect errors
-        'no-empty-function': 0,
+        'no-empty-function': 'off',
 
         // I prefer shorthand syntax
         '@typescript-eslint/array-type': ['error', { default: 'array' }],
@@ -92,7 +93,7 @@ module.exports = {
         ],
 
         // not a big fan of requiring unknown objects to require the index signature
-        '@typescript-eslint/ban-types': 0,
+        '@typescript-eslint/ban-types': 'off',
 
         // This is a "better" version of the `noUnusedLocals` and
         // `noUnusedParameters` from the tsconfig.json since it can catch
@@ -107,6 +108,12 @@ module.exports = {
           },
         ],
       },
+
+      'no-use-before-define': 'off',
+      '@typescript-eslint/no-use-before-define': [
+        'warn',
+        { ignoreTypeReferences: true },
+      ],
     },
     {
       files: [
@@ -120,24 +127,24 @@ module.exports = {
       },
       // allow for less strict rules when writing tests
       rules: {
-        'prefer-template': 0,
+        'prefer-template': 'off',
 
-        '@typescript-eslint/no-explicit-any': 0,
-        '@typescript-eslint/explicit-function-return-type': 0,
-        '@typescript-eslint/no-object-literal-type-assertion': 0,
-        '@typescript-eslint/no-var-requires': 0,
-        '@typescript-eslint/no-empty-function': 0,
-        '@typescript-eslint/ban-ts-comment': 0,
-        '@typescript-eslint/no-empty-function': 0,
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-object-literal-type-assertion': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
 
-        'jsx-a11y/no-autofocus': 0,
-        'jsx-a11y/no-static-element-interactions': 0,
-        'jsx-a11y/anchor-is-valid': 0,
-        'jsx-a11y/control-has-associated-label': 0,
+        'jsx-a11y/no-autofocus': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'jsx-a11y/anchor-is-valid': 'off',
+        'jsx-a11y/control-has-associated-label': 'off',
 
-        'react/prop-types': 0,
-        'react/display-name': 0,
-        'react/prefer-stateless-function': 0,
+        'react/prop-types': 'off',
+        'react/display-name': 'off',
+        'react/prefer-stateless-function': 'off',
       },
     },
     {
