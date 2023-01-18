@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/mlaursen/eslint-config/compare/v2.1.0...v2.1.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* move no-use-before-define rule into overrides object ([b951bfe](https://github.com/mlaursen/eslint-config/commit/b951bfe1b5cb58e95a7efcf76fb673b906aa5764))
+
 ## [2.1.0](https://github.com/mlaursen/eslint-config/compare/v2.0.1...v2.1.0) (2023-01-18)
 
 
