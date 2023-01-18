@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/mlaursen/eslint-config/compare/v2.0.1...v2.1.0) (2023-01-18)
+
+
+### Features
+
+* enable no-use-before-define rule as a warning ([09c9a0c](https://github.com/mlaursen/eslint-config/commit/09c9a0cad04553cd6081c34f0e7b99535082dceb))
+
 ### [2.0.1](https://github.com/mlaursen/eslint-config/compare/v2.0.0...v2.0.1) (2022-11-19)
 
 ## [2.0.0](https://github.com/mlaursen/eslint-config/compare/v1.9.0...v2.0.0) (2022-11-18)
