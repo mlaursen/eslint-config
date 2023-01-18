@@ -1,8 +1,8 @@
-const packageJson = require('./package.json');
+const packageJson = require("./package.json");
 const {
   createConfig,
   defaultGetCommitType,
-} = require('@mlaursen/changelog-preset/createConfig');
+} = require("@mlaursen/changelog-preset/createConfig");
 
 module.exports = createConfig({
   tokens: Array.from(
@@ -13,14 +13,14 @@ module.exports = createConfig({
   ),
   ignoreDeps: false,
   getCommitType: (commit) => {
-    const { scope = '' } = commit;
-    if (scope === 'deps') {
-      return 'Dependencies';
+    const { scope = "" } = commit;
+    if (scope === "deps") {
+      return "Dependencies";
     }
 
-    if (scope === 'dev-deps') {
+    if (scope === "dev-deps") {
       // don't include dev-deps
-      return '';
+      return "";
     }
 
     return defaultGetCommitType(commit);

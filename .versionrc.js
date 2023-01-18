@@ -1,1 +1,1 @@
-module.exports = require('@mlaursen/changelog-preset');
+module.exports = require("@mlaursen/changelog-preset");
