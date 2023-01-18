@@ -57,6 +57,9 @@ module.exports = {
     'import/no-unresolved': 'off',
 
     curly: 'error',
+
+    'object-shorthand': ['error', 'always'],
+    'no-useless-rename': ['error'],
   },
   overrides: [
     {
