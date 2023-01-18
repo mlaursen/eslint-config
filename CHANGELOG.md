@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/mlaursen/eslint-config/compare/v2.1.1...v2.2.0) (2023-01-18)
+
+
+### Features
+
+* enable object-shorthand and no-useless-rename rules ([b7734c4](https://github.com/mlaursen/eslint-config/commit/b7734c418306971d326580b970a2845bea265aac))
+
 ### [2.1.1](https://github.com/mlaursen/eslint-config/compare/v2.1.0...v2.1.1) (2023-01-18)
 
 
