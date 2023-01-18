@@ -8,8 +8,8 @@
   "license": "MIT",
   "scripts": {
     "test": "eslint -c index.js \"test/**/*.{js,jsx,ts,tsx}\"",
-    "run-script": "ts-node -T -P tsconfig.json",
-    "release": "yarn run-script scripts/release.ts"
+    "cli": "ts-node -P tsconfig.json --swc",
+    "release": "pnpm run cli scripts/release.ts"
   },
   "engines": {
     "pnpm": ">=7",
@@ -41,6 +41,7 @@
   "devDependencies": {
     "@mlaursen/changelog-preset": "^1.1.0",
     "@octokit/core": "^4.1.0",
+    "@swc/core": "^1.3.27",
     "@types/inquirer": "^8.2.1",
     "@types/node": "^18.11.18",
     "dotenv": "^16.0.3",
