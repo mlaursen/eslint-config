@@ -89,7 +89,12 @@ async function run(): Promise<void> {
 - ${githubDotEnv}
 
 A token can be created at:
-- https://github.com/settings/tokens/new?scopes=repo
+- https://github.com/settings/personal-access-tokens/new
+
+The token must have:
+- Repository Access
+  - Contents - read and write (for creating release)
+  - Metadata - read-only (required by Contents)
 `
     );
 
