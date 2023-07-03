@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/mlaursen/eslint-config/compare/v2.3.0...v2.4.0) (2023-07-03)
+
+
+### Features
+
+* **deps:** bump dependencies to latest to support latest typescript ([f44c6f4](https://github.com/mlaursen/eslint-config/commit/f44c6f4a090619f0a69fa09455e2756c8d251ae8))
+
 ## [2.3.0](https://github.com/mlaursen/eslint-config/compare/v2.2.0...v2.3.0) (2023-06-05)
 
 
