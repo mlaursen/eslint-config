@@ -140,10 +140,12 @@ module.exports = {
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-empty-function": "off",
 
+        "jsx-a11y/anchor-has-content": 0,
+        "jsx-a11y/anchor-is-valid": "off",
+        "jsx-a11y/click-events-have-key-events": 0,
+        "jsx-a11y/control-has-associated-label": "off",
         "jsx-a11y/no-autofocus": "off",
         "jsx-a11y/no-static-element-interactions": "off",
-        "jsx-a11y/anchor-is-valid": "off",
-        "jsx-a11y/control-has-associated-label": "off",
 
         "react/prop-types": "off",
         "react/display-name": "off",
