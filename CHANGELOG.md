@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/mlaursen/eslint-config/compare/v2.5.0...v3.0.0) (2023-09-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **typescript:** force inline-type-imports
+
+### Features
+
+* **typescript:** force inline-type-imports ([e934b6e](https://github.com/mlaursen/eslint-config/commit/e934b6e8682f5c11aca2fd888277442751875a7e))
+
 ## [2.5.0](https://github.com/mlaursen/eslint-config/compare/v2.4.0...v2.5.0) (2023-09-13)
 
 
