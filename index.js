@@ -66,6 +66,11 @@ module.exports = {
       files: ["**/*.ts", "**/*.tsx"],
       extends: ["plugin:@typescript-eslint/recommended"],
       rules: {
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          { fixStyle: "inline-type-imports" },
+        ],
+
         // I want correct tsdoc syntax
         "tsdoc/syntax": "warn",
 
