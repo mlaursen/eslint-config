@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/mlaursen/eslint-config/compare/v3.0.0...v4.0.0) (2023-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **test:** add eslint-plugin-testing-library
+
+### Features
+
+* **deps:** bump dependencies to latest ([83e5371](https://github.com/mlaursen/eslint-config/commit/83e53712724a16475d3dc9b4504afcc67f37bc47))
+* **test:** add eslint-plugin-testing-library ([8b06686](https://github.com/mlaursen/eslint-config/commit/8b06686ee5a3c71268e9903900a9adb0e737f4c9))
+
 ## [3.0.0](https://github.com/mlaursen/eslint-config/compare/v2.5.0...v3.0.0) (2023-09-22)
 
 
