@@ -159,7 +159,7 @@ module.exports = {
     },
     {
       files: ["**/__tests__/**", "**/*.test.*"],
-      extends: ["plugin:jest/recommended"],
+      extends: ["plugin:jest/recommended", "plugin:testing-library/react"],
       rules: {
         // it's valid to do @jest-environment or other things in tests
         "tsdoc/syntax": 0,
