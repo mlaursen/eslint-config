@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "test": "eslint -c index.js \"test/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint -c scripts/.eslintrc.js \"scripts/**/*.ts\"",
     "cli": "ts-node -P tsconfig.json --swc",
     "release": "pnpm run cli scripts/release.ts"
   },
