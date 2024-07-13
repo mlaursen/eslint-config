@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/mlaursen/eslint-config/compare/v4.1.1...v4.2.0) (2024-07-13)
+
+
+### Features
+
+* bump dependencies to latest ([fd4d7df](https://github.com/mlaursen/eslint-config/commit/fd4d7df5340add42a2dbf28c181ba1312b120cda))
+
 ### [4.1.1](https://github.com/mlaursen/eslint-config/compare/v4.1.0...v4.1.1) (2024-03-16)
 
 ## [4.1.0](https://github.com/mlaursen/eslint-config/compare/v4.0.0...v4.1.0) (2024-01-28)
