@@ -9,8 +9,8 @@
   "scripts": {
     "test": "eslint -c index.js \"test/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint -c scripts/.eslintrc.js \"scripts/**/*.ts\"",
-    "cli": "ts-node -P tsconfig.json --swc",
-    "release": "pnpm run cli scripts/release.ts"
+    "run-script": "tsx --tsconfig scripts/tsconfig.json",
+    "release": "pnpm run run-script scripts/release.ts"
   },
   "engines": {
     "pnpm": ">=7",
@@ -50,7 +50,7 @@
     "eslint": "^8.57.0",
     "inquirer": "^8.2.6",
     "standard-version": "^9.5.0",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.16.2",
     "typescript": "^5.5.3"
   },
   "peerDependencies": {
