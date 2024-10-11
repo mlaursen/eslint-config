@@ -1,147 +1,138 @@
+import { confirm, input, rawlist } from "@inquirer/prompts";
 import { Octokit } from "@octokit/core";
-import { execSync } from "child_process";
 import dotenv from "dotenv";
-import inquirer from "inquirer";
-import { readFileSync } from "node:fs";
+import { execSync } from "node:child_process";
+import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-function loggedCommand(command: string): void {
+const exec = (command: string): void => {
   console.log(command);
-  execSync(command, { stdio: "inherit" });
-  console.log("");
+  execSync(command);
+};
+
+interface CreateReleaseOptions {
+  body: string;
+  version: string;
+  override?: boolean;
+  prerelease: boolean;
 }
 
-function undo(version?: string): void {
-  loggedCommand("git reset HEAD^");
-  if (typeof version === "string") {
-    loggedCommand(`git tag -d v${version}`);
-  }
-}
+async function createRelease(options: CreateReleaseOptions): Promise<void> {
+  const { version, body, override, prerelease } = options;
 
-const NEW_ENTRY = /^#{1,3}\s+\[\d/;
-
-async function getReleaseNotes(version: string): Promise<string> {
-  console.log("Update the CHANGELOG.md with any additional changes.");
-  const { confirmed } = await inquirer.prompt<{ confirmed: boolean }>([
-    {
-      type: "confirm",
-      name: "confirmed",
-      message: "Continue the release?",
-    },
-  ]);
-  if (!confirmed) {
-    console.error("Canceling the release.");
-    undo(version);
-
-    process.exit(1);
-  }
-
-  const changelog = readFileSync(join(process.cwd(), "CHANGELOG.md"), "utf8");
-  const lines = changelog.split(/\r?\n/);
-  let lastEntryStart = -1;
-  let nextEntryStart = -1;
-
-  for (let i = 0; i < lines.length; i += 1) {
-    if (NEW_ENTRY.test(lines[i])) {
-      if (lastEntryStart === -1) {
-        lastEntryStart = i + 1;
-      } else if (nextEntryStart === -1) {
-        nextEntryStart = i;
-        break;
+  dotenv.config({ path: ".env.local", override });
+  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+  try {
+    const response = await octokit.request(
+      "POST /repos/{owner}/{repo}/releases",
+      {
+        owner: "mlaursen",
+        repo: "eslint-config",
+        tag_name: `@mlaursen/eslint-config@${version}`,
+        body,
+        prerelease,
       }
-    }
-  }
-
-  if (lastEntryStart === -1 || nextEntryStart === -1) {
-    console.error("Unable to find a release block.");
-    process.exit(1);
-  }
-
-  return lines.slice(lastEntryStart, nextEntryStart).join("\n");
-}
-
-const RELEASE_TYPES = ["major", "minor", "patch"];
-
-async function run(): Promise<void> {
-  let type = "";
-  let prerelease = "";
-  for (let i = 0; i < process.argv.length; i += 1) {
-    const flag = process.argv[i];
-    const value = process.argv[i + 1];
-    if (
-      flag === "-t" &&
-      typeof value === "string" &&
-      RELEASE_TYPES.includes(value)
-    ) {
-      type = ` --release-as ${value}`;
-    } else if (flag === "-p" || flag === "--prerelease") {
-      prerelease = " --prerelease";
-    }
-  }
-
-  const githubDotEnv = join(process.cwd(), ".env.github");
-  dotenv.config({ path: githubDotEnv });
-
-  const { GITHUB_TOKEN } = process.env;
-  if (!GITHUB_TOKEN) {
-    console.error(
-      `Missing a \`GITHUB_TOKEN\` environment variable. This should be located at:
-- ${githubDotEnv}
-
-A token can be created at:
-- https://github.com/settings/personal-access-tokens/new
-
-The token must have:
-- Repository Access
-  - Contents - read and write (for creating release)
-  - Metadata - read-only (required by Contents)
-`
     );
 
-    process.exit(1);
-  }
+    console.log(`Created release: ${response.data.html_url}`);
+  } catch (e) {
+    console.error(e);
 
-  loggedCommand(`pnpm standard-version${type}${prerelease}`);
-
-  const { version } = JSON.parse(
-    readFileSync(join(process.cwd(), "package.json"), "utf8")
-  );
-  if (typeof version !== "string") {
-    console.error("Unable to get the package version.");
-    undo();
-    process.exit(1);
-  }
-
-  const releaseNotes = await getReleaseNotes(version);
-  const { confirmed } = await inquirer.prompt<{ confirmed: boolean }>([
-    {
-      type: "confirm",
-      name: "confirmed",
-      message: `Open the authenticator app to get a one-time password and run the following command:
-
-pnpm publish --otp
-`,
-    },
-  ]);
-  if (!confirmed) {
-    console.error("Canceling the release.");
-    undo(version);
-
-    process.exit(1);
-  }
-  loggedCommand("git push --follow-tags origin main");
-  const octokit = new Octokit({ auth: GITHUB_TOKEN });
-  const response = await octokit.request(
-    "POST /repos/{owner}/{repo}/releases",
-    {
-      owner: "mlaursen",
-      repo: "eslint-config",
-      tag_name: `v${version}`,
-      body: releaseNotes,
+    console.log();
+    console.log(
+      "The npm token is most likely expired or never created. Update the `.env.local` to include the latest GITHUB_TOKEN"
+    );
+    console.log(
+      "Regenerate the token: https://github.com/settings/tokens?type=beta"
+    );
+    if (
+      !(await confirm({ message: "Try creating the Github release again?" }))
+    ) {
+      process.exit(1);
     }
-  );
 
-  console.log(`Created release: ${response.data.html_url}`);
+    return createRelease({ ...options, override: true });
+  }
+}
+
+async function getCurrentChangeset(disableAuto?: boolean): Promise<string> {
+  let changesetName = "";
+  if (!disableAuto) {
+    changesetName = execSync("git diff --name-only @{upstream} .changeset/*.md")
+      .toString()
+      .trim();
+  }
+
+  if (
+    !changesetName ||
+    !(await confirm({
+      message: `Is "${changesetName}" the correct changeset path?`,
+    }))
+  ) {
+    const changesetNames = await readdir(".changeset");
+    changesetName = await rawlist({
+      message: "Select the changeset path",
+      choices: changesetNames
+        .filter((changeset) => changeset.endsWith(".md"))
+        .map((changeset) => ({
+          value: changeset,
+        })),
+    });
+    changesetName = join(".changeset", changesetName);
+  }
+
+  return await readFile(changesetName, "utf8");
+}
+
+async function getReleaseVersion(): Promise<string> {
+  const version = JSON.parse(await readFile("package.json", "utf8")).version;
+
+  if (
+    await confirm({
+      message: `Is "${version}" the next github release version?`,
+    })
+  ) {
+    return version;
+  }
+
+  return await input({
+    message: "Input the next release version for Github",
+  });
+}
+
+async function run(): Promise<void> {
+  exec("pnpm clean");
+  exec("pnpm build");
+
+  console.log(`Run the following commands in another terminal since I don't know how to get it to work in this script.
+
+pnpm changeset
+pnpm changeset version
+`);
+
+  if (!(await confirm({ message: "Continue the release?" }))) {
+    process.exit(1);
+  }
+
+  exec("git add -u");
+  exec("git add .changeset");
+
+  const changeset = await getCurrentChangeset();
+  const version = await getReleaseVersion();
+
+  exec('git commit -m "build(version): version packages"');
+  console.log(`Run the following command in another terminal since I don't know how to get it to work in this script.
+
+pnpm changeset publish
+`);
+  await confirm({ message: "Have the packages been published?" });
+  exec("git push --follow-tags");
+
+  await createRelease({
+    body: changeset,
+    version,
+    prerelease: false,
+  });
 }
 
 run();

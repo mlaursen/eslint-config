@@ -2,24 +2,23 @@
   "name": "@mlaursen/eslint-config",
   "version": "4.2.0",
   "description": "An eslint config used by mlaursen for most projects.",
-  "main": "index.js",
   "repository": "https://github.com/mlaursen/eslint-config.git",
   "author": "Mikkel Laursen <mlaursen03@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "eslint -c index.js \"test/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "eslint -c scripts/.eslintrc.js \"scripts/**/*.ts\"",
+    "prepare": "husky",
+    "clean": "rm -rf dist",
+    "build": "tsc -p tsconfig.build.json",
     "run-script": "tsx --tsconfig scripts/tsconfig.json",
     "release": "pnpm run run-script scripts/release.ts"
   },
-  "engines": {
-    "pnpm": ">=7",
-    "node": ">=16"
-  },
-  "engineStrict": true,
   "files": [
-    "index.js"
+    "dist/"
   ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
   "bugs": {
     "url": "https://github.com/mlaursen/eslint-config/issues"
   },
@@ -28,33 +27,32 @@
     "typescript"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.16.0",
-    "@typescript-eslint/parser": "^7.16.0",
-    "confusing-browser-globals": "^1.0.11",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jest": "^28.6.0",
-    "eslint-plugin-jsx-a11y": "^6.9.0",
-    "eslint-plugin-react": "^7.34.4",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-testing-library": "^6.2.2",
-    "eslint-plugin-tsdoc": "^0.3.0"
+    "@eslint/compat": "^1.2.0",
+    "@eslint/js": "^9.12.0",
+    "@types/eslint__js": "^8.42.3",
+    "@typescript-eslint/utils": "^8.8.1",
+    "eslint-plugin-jest": "^28.8.3",
+    "eslint-plugin-jest-dom": "^5.4.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-testing-library": "^6.3.0",
+    "typescript-eslint": "^8.8.1"
   },
   "devDependencies": {
-    "@mlaursen/changelog-preset": "^1.1.0",
+    "@changesets/cli": "^2.27.9",
+    "@inquirer/prompts": "^7.0.0",
     "@octokit/core": "^6.1.2",
-    "@swc/core": "^1.6.13",
-    "@types/inquirer": "^9.0.7",
     "@types/node": "^20.14.10",
     "dotenv": "^16.4.5",
-    "eslint": "^8.57.0",
-    "inquirer": "^8.2.6",
-    "standard-version": "^9.5.0",
-    "tsx": "^4.16.2",
-    "typescript": "^5.5.3"
+    "eslint": "^9.12.0",
+    "husky": "^9.1.6",
+    "inquirer": "^12.0.0",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "eslint": ">= 8.0.0",
+    "eslint": ">= 9.0.0",
     "typescript": ">= 5"
   },
   "peerDependenciesMeta": {
@@ -68,8 +66,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,md,yml,yaml,json}": [
+      "prettier --write"
+    ]
+  },
   "volta": {
-    "node": "20.15.1",
-    "pnpm": "9.5.0"
+    "node": "20.12.2",
+    "pnpm": "9.12.1"
   }
 }
