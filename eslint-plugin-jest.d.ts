@@ -1,5 +1,5 @@
 declare module "eslint-plugin-jest" {
-  import { TSESLint } from "@typescript-eslint/utils";
+  import { type TSESLint } from "@typescript-eslint/utils";
 
   interface JestPluginConfig {
     plugins: {

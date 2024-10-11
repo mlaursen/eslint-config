@@ -1,6 +1,6 @@
 declare module "eslint-plugin-testing-library" {
-  import { FixupPluginDefinition } from "@eslint/compat";
-  import { TSESLint } from "@typescript-eslint/utils";
+  import { type FixupPluginDefinition } from "@eslint/compat";
+  import { type TSESLint } from "@typescript-eslint/utils";
 
   interface TestingLibraryPluginConfig {
     plugins: {

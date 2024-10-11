@@ -1,5 +1,6 @@
 declare module "eslint-plugin-jest-dom" {
-  import { TSESLint } from "@typescript-eslint/utils";
+  import { type TSESLint } from "@typescript-eslint/utils";
+
   interface JestDomPluginConfig {
     plugins: {
       jest: TSESLint.FlatConfig.Plugin;

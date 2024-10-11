@@ -1,6 +1,7 @@
 import { base } from "./base";
 import { frontend, frontendTypeChecking } from "./frontend";
 import { jest, jestDom } from "./jest";
+import { next } from "./next";
 import { testingLibraryDom, testingLibraryReact } from "./testing-library";
 import { typescript, typescriptTypeChecking } from "./typescript";
 
@@ -16,4 +17,5 @@ export const configs = {
   testingLibraryReact,
   frontend,
   frontendTypeChecking,
+  next,
 } as const;

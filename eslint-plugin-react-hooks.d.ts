@@ -1,5 +1,5 @@
 declare module "eslint-plugin-react-hooks" {
-  import { TSESLint } from "@typescript-eslint/utils";
+  import { type TSESLint } from "@typescript-eslint/utils";
 
   interface ReactHooksPlugin extends TSESLint.FlatConfig.Plugin {
     configs: {
