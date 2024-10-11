@@ -55,35 +55,6 @@ async function createRelease(options: CreateReleaseOptions): Promise<void> {
   }
 }
 
-async function getCurrentChangeset(disableAuto?: boolean): Promise<string> {
-  let changesetName = "";
-  if (!disableAuto) {
-    changesetName = execSync("git diff --name-only @{upstream} .changeset/*.md")
-      .toString()
-      .trim();
-  }
-
-  if (
-    !changesetName ||
-    !(await confirm({
-      message: `Is "${changesetName}" the correct changeset path?`,
-    }))
-  ) {
-    const changesetNames = await readdir(".changeset");
-    changesetName = await rawlist({
-      message: "Select the changeset path",
-      choices: changesetNames
-        .filter((changeset) => changeset.endsWith(".md"))
-        .map((changeset) => ({
-          value: changeset,
-        })),
-    });
-    changesetName = join(".changeset", changesetName);
-  }
-
-  return await readFile(changesetName, "utf8");
-}
-
 async function getReleaseVersion(): Promise<string> {
   const version = JSON.parse(await readFile("package.json", "utf8")).version;
 
@@ -108,6 +79,8 @@ async function run(): Promise<void> {
 
 pnpm changeset
 pnpm changeset version
+
+Make sure to copy the generated file to the clipboard since it gets deleted with the current changeset behavior for some reason.
 `);
 
   if (!(await confirm({ message: "Continue the release?" }))) {
@@ -117,8 +90,8 @@ pnpm changeset version
   exec("git add -u");
   exec("git add .changeset");
 
-  const changeset = await getCurrentChangeset();
   const version = await getReleaseVersion();
+  const changeset = await input({ message: "Paste the changeset contents" });
 
   exec('git commit -m "build(version): version packages"');
   console.log(`Run the following command in another terminal since I don't know how to get it to work in this script.

@@ -1,13 +1,5 @@
 # Changelog
 
-## 5.0.0
-
-### Major Changes
-
-- Update the eslint config to use eslint@9 or greater. Also includes a few other new eslint rules.
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ## [4.2.0](https://github.com/mlaursen/eslint-config/compare/v4.1.1...v4.2.0) (2024-07-13)
 
 ### Features
