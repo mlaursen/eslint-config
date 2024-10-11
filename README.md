@@ -14,11 +14,11 @@ Then create an `eslint.config.mjs` with the following:
 
 ```js
 // @ts-check
-import { config, configs } from "@mlaursen/eslint-config";
+import { config, configs, gitignore } from "@mlaursen/eslint-config";
 
 // choose the config you want to use
-export default config(...configs.frontend);
-export default config(...configs.frontendTypeChecking(import.meta.dirname));
+export default config(gitignore(import.meta.url), ...configs.frontend);
+export default config(gitignore(import.meta.url), ...configs.frontendTypeChecking(import.meta.dirname));
 ```
 
 The `config` export is the `typescript-eslint.config()` function to provide
@@ -126,6 +126,17 @@ This enables the `eslint-plugin-testing-library/.configs["flat/dom]` plugin and 
 import { config, configs } from "@mlaursen/eslint-config";
 
 export default config(...configs.testingLibraryDom);
+```
+
+### next
+
+This is a small wrapper around the `@next/eslint-plugin-next` that works with eslint v9.
+
+```js
+// @ts-check
+import { config, configs } from "@mlaursen/eslint-config";
+
+export default config(...configs.next);
 ```
 
 ### frontend
