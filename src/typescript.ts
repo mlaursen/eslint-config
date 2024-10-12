@@ -1,13 +1,22 @@
 import { type TSESLint } from "@typescript-eslint/utils";
 import tseslint from "typescript-eslint";
 import { base } from "./base";
-import { TEST_FILES } from "./constants";
+import { BASE_NAME, TEST_FILES, TS_FILES } from "./constants";
 
+/**
+ * @example
+ * ```ts
+ * import { config, configs, gitignore } from "@mlaursen/eslint-config";
+ *
+ * export default config(gitignore(import.meta.url), ...configs.typescript);
+ * ```
+ */
 export const typescript: TSESLint.FlatConfig.ConfigArray = [
   ...base,
   ...tseslint.configs.strict,
   {
-    files: ["**/*.{ts,tsx}"],
+    name: `${BASE_NAME}/typescript`,
+    files: TS_FILES,
     rules: {
       // I prefer specifying when something is used only as a type
       "@typescript-eslint/consistent-type-imports": [
@@ -49,6 +58,7 @@ export const typescript: TSESLint.FlatConfig.ConfigArray = [
     },
   },
   {
+    name: `${BASE_NAME}/typescript/tests`,
     files: TEST_FILES,
     rules: {
       // allow tests to be less strict
@@ -66,9 +76,9 @@ export const typescript: TSESLint.FlatConfig.ConfigArray = [
  * @example
  * ```ts
  * // @ts-check
- * import { config, configs } from "@mlaursen/eslint-config";
+ * import { config, configs, gitignore } from "@mlaursen/eslint-config";
  *
- * export default config(...configs.typescriptTypeChecking(import.meta.dirname));
+ * export default config(gitignore(import.meta.url), ...configs.typescriptTypeChecking(import.meta.dirname));
  * ```
  */
 export const typescriptTypeChecking = (
@@ -77,6 +87,14 @@ export const typescriptTypeChecking = (
   ...typescript,
   ...tseslint.configs.strictTypeCheckedOnly,
   {
+    name: `${BASE_NAME}/typescript-type-checking`,
+    files: TS_FILES,
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir,
+      },
+    },
     rules: {
       // I do not enable the `noUncheckedIndexedAccess` tsconfig option, so I
       // still need to verify that stuff exists. There are other cases where I
@@ -103,20 +121,13 @@ export const typescriptTypeChecking = (
     },
   },
   {
+    name: `${BASE_NAME}/typescript-type-checking/tests`,
     files: TEST_FILES,
     rules: {
       // like base typescript, can be less strict in tests
       "@typescript-eslint/no-unsafe-return": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/restrict-template-expressions": "off",
-    },
-  },
-  {
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir,
-      },
     },
   },
 ];

@@ -1,10 +1,19 @@
 import eslint from "@eslint/js";
 import { type TSESLint } from "@typescript-eslint/utils";
-import { DEV_WARNING_PROD_ERROR } from "./constants";
+import { BASE_NAME, DEV_WARNING_PROD_ERROR } from "./constants";
 
+/**
+ * @example
+ * ```js
+ * import { config, configs } from "@mlaursen/eslint-config";
+ *
+ * export default configs.base;
+ * ```
+ */
 export const base: TSESLint.FlatConfig.ConfigArray = [
   eslint.configs.recommended,
   {
+    name: `${BASE_NAME}/base`,
     rules: {
       // You normally do not want `console.{whatever}` in prod but is fine for
       // development in debugging
