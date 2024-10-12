@@ -41,6 +41,7 @@ export const typescript: TSESLint.FlatConfig.ConfigArray = [
         },
       ],
 
+      "no-use-before-define": "off",
       "@typescript-eslint/no-use-before-define": [
         "warn",
         { ignoreTypeReferences: true },
@@ -75,6 +76,41 @@ export const typescriptTypeChecking = (
 ): TSESLint.FlatConfig.ConfigArray => [
   ...typescript,
   ...tseslint.configs.strictTypeCheckedOnly,
+  {
+    rules: {
+      // I do not enable the `noUncheckedIndexedAccess` tsconfig option, so I
+      // still need to verify that stuff exists. There are other cases where I
+      // know it exists, so I can ignore those as well
+      "@typescript-eslint/no-unnecessary-condition": "off",
+
+      // I never use `this`
+      "@typescript-eslint/unbound-method": "off",
+
+      "@typescript-eslint/restrict-template-expressions": [
+        "error",
+        {
+          allowNumber: true,
+        },
+      ],
+
+      // I want to allow `onClick={async (event) => { ... }}`
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          checksVoidReturn: false,
+        },
+      ],
+    },
+  },
+  {
+    files: TEST_FILES,
+    rules: {
+      // like base typescript, can be less strict in tests
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/restrict-template-expressions": "off",
+    },
+  },
   {
     languageOptions: {
       parserOptions: {
