@@ -16,17 +16,22 @@ Then create an `eslint.config.mjs` with the following:
 // @ts-check
 import { config, configs, gitignore } from "@mlaursen/eslint-config";
 
-// choose the config you want to use
+// choose the config you want to use:
+// somewhat strict type checking
 export default config(gitignore(import.meta.url), ...configs.frontend);
+
+// strict type checking
 export default config(gitignore(import.meta.url), ...configs.frontendTypeChecking(import.meta.dirname));
 ```
 
-The `config` export is the `typescript-eslint.config()` function to provide
-type definitions.
+The `config` export is the `typescript-eslint.config()` function to provide type
+definitions and `gitignore` automatically ignores files from linting based on
+your `.gitignore` rules.
 
 ## Configs
 
-I normally just use the `frontend` or `frontendTypeChecking` configs, but the others can be used individually if needed.
+I normally just use the `frontend` or `frontendTypeChecking` configs, but the
+others can be used individually if needed.
 
 <!--toc:start-->
 
@@ -37,6 +42,9 @@ I normally just use the `frontend` or `frontendTypeChecking` configs, but the ot
 - [jestDom](#jestdom)
 - [testingLibraryReact](#testinglibraryreact)
 - [testingLibraryDom](#testinglibrarydom)
+- [react](#react)
+- [jsxA11y](#jsxa11y)
+- [next](#next)
 - [frontend](#frontend)
 - [frontendTypeChecking](#frontendtypechecking)
 
@@ -128,6 +136,28 @@ import { config, configs } from "@mlaursen/eslint-config";
 export default config(...configs.testingLibraryDom);
 ```
 
+### react
+
+This enables the `eslint-plugin-react` and `eslint-plugin-react-hooks`:
+
+```js
+// @ts-check
+import { config, configs } from "@mlaursen/eslint-config";
+
+export default config(...configs.react);
+```
+
+### jsxA11y
+
+This enables `eslint-plugin-jsx-a11y`:
+
+```js
+// @ts-check
+import { config, configs } from "@mlaursen/eslint-config";
+
+export default config(...configs.jsxA11y);
+```
+
 ### next
 
 This is a small wrapper around the `@next/eslint-plugin-next` that works with eslint v9.
@@ -141,7 +171,8 @@ export default config(...configs.next);
 
 ### frontend
 
-This is my normal frontend repo setup with `jest`, `jest-dom`, `typescript`, `react`, `testing-library/react`.
+This is my normal frontend repo setup with `react`, `jsxA11y`, `jest`,
+`jest-dom`, `typescript`, `testing-library/react`.
 
 ```js
 // @ts-check

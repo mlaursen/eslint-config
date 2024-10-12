@@ -5,3 +5,5 @@ export const TEST_FILES = [
   "**/__tests__/**",
   "**/*.{spec,test}.{ts,tsx,js,jsx}",
 ];
+
+export const JSX_FILES = ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"];
