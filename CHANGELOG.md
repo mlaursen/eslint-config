@@ -1,5 +1,17 @@
 # @mlaursen/eslint-config
 
+## 5.1.3
+
+### Patch Changes
+
+- The release focused on improving docs and debugging:
+
+  - added a `name` to each configuration so it can be inspected more easily with `npx @eslint/config-inspector@latest`
+  - added tsdoc to each configuration object so it can be viewed from editor
+  - export `globals` so additional globals can be added easily
+  - allow default export if you prefer `import mlaursenConfig from "@mlaursen/eslint-config` -> `export default mlaursenConfig.configs.typescript;`
+  - added a few more typescript file types
+
 ## 5.1.2
 
 ### Patch Changes
