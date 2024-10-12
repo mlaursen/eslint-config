@@ -5,9 +5,9 @@ import { execSync } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-const exec = (command: string): void => {
+const exec = (command: string, inherit = false): void => {
   console.log(command);
-  execSync(command);
+  execSync(command, { stdio: inherit ? "inherit" : undefined });
 };
 
 interface CreateReleaseOptions {
@@ -71,34 +71,47 @@ async function getReleaseVersion(): Promise<string> {
   });
 }
 
+async function getCurrentChangelog(disableAuto?: boolean): Promise<string> {
+  let changesetName = "";
+  if (!disableAuto) {
+    changesetName = execSync("git diff --name-only @{upstream} .changeset/*.md")
+      .toString()
+      .trim();
+  }
+
+  if (
+    !changesetName ||
+    !(await confirm({
+      message: `Is "${changesetName}" the correct changeset path?`,
+    }))
+  ) {
+    const changesetNames = await readdir(".changeset");
+    changesetName = await rawlist({
+      message: "Select the changeset path",
+      choices: changesetNames
+        .filter((changeset) => changeset.endsWith(".md"))
+        .map((changeset) => ({
+          value: changeset,
+        })),
+    });
+    changesetName = join(".changeset", changesetName);
+  }
+
+  return await readFile(changesetName, "utf8");
+}
+
 async function run(): Promise<void> {
   exec("pnpm clean");
   exec("pnpm build");
+  exec("pnpm changeset", true);
+  const changeset = await getCurrentChangelog();
 
-  console.log(`Run the following commands in another terminal since I don't know how to get it to work in this script.
-
-pnpm changeset
-pnpm changeset version
-
-Make sure to copy the generated file to the clipboard since it gets deleted with the current changeset behavior for some reason.
-`);
-
-  if (!(await confirm({ message: "Continue the release?" }))) {
-    process.exit(1);
-  }
-
-  exec("git add -u");
-  exec("git add .changeset");
-
+  exec("pnpm changeset version", true);
   const version = await getReleaseVersion();
-  const changeset = await input({ message: "Paste the changeset contents" });
+  exec("git add -u");
 
   exec('git commit -m "build(version): version packages"');
-  console.log(`Run the following command in another terminal since I don't know how to get it to work in this script.
-
-pnpm changeset publish
-`);
-  await confirm({ message: "Have the packages been published?" });
+  exec("pnpm changeset publish", true);
   exec("git push --follow-tags");
 
   await createRelease({
