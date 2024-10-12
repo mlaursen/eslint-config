@@ -33,6 +33,13 @@ export const react: TSESLint.FlatConfig.ConfigArray = [
       ...recommendedRules,
       ...jsxRuntimeRules,
       ...reactHooksPlugin.configs.recommended.rules,
+
+      "react-hooks/exhaustive-deps": [
+        "error",
+        {
+          additionalHooks: "(useIsomorphicLayoutEffect)",
+        },
+      ],
     },
     languageOptions: {
       ...flat.recommended.languageOptions,
