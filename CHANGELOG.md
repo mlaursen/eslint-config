@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 5.1.1
+
+### Patch Changes
+
+- Fixed missing react and jsx-a11y plugins.
+
 ## 5.1.0
 
 ### Minor Changes
