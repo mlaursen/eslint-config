@@ -1,5 +1,17 @@
 # @mlaursen/eslint-config
 
+## 5.1.2
+
+### Patch Changes
+
+- There were a few changes in this release:
+
+  - attempt to fix the globals issue when using react/jsx-a11y
+  - allow less strict typescript behavior in tests
+  - fix some typescript rules that conflicted with base js
+  - customize and disable some strict typescript rules since I don't always agree with them
+  - require the dependency array for the `useIsomorphicLayoutEffect` hook
+
 ## 5.1.1
 
 ### Patch Changes
