@@ -1,4 +1,3 @@
-import globals from "globals";
 import { config } from "typescript-eslint";
 import { base } from "./base";
 import { frontend, frontendTypeChecking } from "./frontend";
@@ -24,11 +23,10 @@ export const configs = {
   jsxA11y,
   next,
 } as const;
-export { config, gitignore, globals };
+export { config, gitignore };
 
 export default {
   config,
   configs,
-  globals,
   gitignore,
 };

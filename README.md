@@ -22,6 +22,16 @@ export default config(gitignore(import.meta.url), ...configs.frontend);
 
 // strict type checking
 export default config(gitignore(import.meta.url), ...configs.frontendTypeChecking(import.meta.dirname));
+
+// NOTE: This is recommended for strict type checking. Callable as:
+// `cross-env STRICT_TYPING=true eslint "**/*.{ts,tsx,mts,mtsx,js,jsx,mjs,cjs}`
+//
+// strict type checking with an environment variable. uncomment the following
+// line to enable it in your editor
+// const strict = true || process.env.STRICT_TYPING === 'true';
+const strict = process.env.STRICT_TYPING === 'true';
+const frontend = strict ? configs.frontendTypeChecking(import.meta.dirname) : configs.frontend
+export default (gitignore(import.meta.url), ...frontend);
 ```
 
 The `config` export is the `typescript-eslint.config()` function to provide type

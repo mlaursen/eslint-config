@@ -15,6 +15,9 @@ export const base: TSESLint.FlatConfig.ConfigArray = [
   {
     name: `${BASE_NAME}/base`,
     rules: {
+      // I use typescript instead
+      "no-undef": "off",
+
       // You normally do not want `console.{whatever}` in prod but is fine for
       // development in debugging
       "no-console": DEV_WARNING_PROD_ERROR,

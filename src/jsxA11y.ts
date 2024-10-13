@@ -1,6 +1,5 @@
 import { type TSESLint } from "@typescript-eslint/utils";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
-import globals from "globals";
 import { BASE_NAME, JSX_FILES, TEST_FILES } from "./constants";
 
 /**
@@ -16,11 +15,6 @@ export const jsxA11y: TSESLint.FlatConfig.ConfigArray = [
     name: `${BASE_NAME}/jsx-a11y`,
     files: JSX_FILES,
     ...jsxA11yPlugin.flatConfigs.recommended,
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
-    },
     rules: {
       // I **only** use autoFocus within dialogs which provide the correct
       // context for screen readers.
@@ -28,8 +22,8 @@ export const jsxA11y: TSESLint.FlatConfig.ConfigArray = [
     },
   },
   {
-    files: TEST_FILES,
     name: `${BASE_NAME}/jsx-a11y/testing`,
+    files: TEST_FILES,
     rules: {
       "jsx-a11y/anchor-has-content": "off",
       "jsx-a11y/click-events-have-key-events": "off",

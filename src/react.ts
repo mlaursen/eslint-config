@@ -1,7 +1,6 @@
 import { type TSESLint } from "@typescript-eslint/utils";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
-import globals from "globals";
 import { BASE_NAME, JSX_FILES } from "./constants";
 
 const { flat } = reactPlugin.configs;
@@ -48,12 +47,6 @@ export const react: TSESLint.FlatConfig.ConfigArray = [
           additionalHooks: "(useIsomorphicLayoutEffect)",
         },
       ],
-    },
-    languageOptions: {
-      ...flat.recommended.languageOptions,
-      globals: {
-        ...globals.browser,
-      },
     },
   },
 ];
