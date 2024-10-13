@@ -18,6 +18,10 @@ export const typescript: TSESLint.FlatConfig.ConfigArray = [
     name: `${BASE_NAME}/typescript`,
     files: TS_FILES,
     rules: {
+      // I normally do not want unified signatures since it helps improve type
+      // inference with function overloading
+      "@typescript-eslint/unified-signatures": "off",
+
       // I prefer specifying when something is used only as a type
       "@typescript-eslint/consistent-type-imports": [
         "error",
