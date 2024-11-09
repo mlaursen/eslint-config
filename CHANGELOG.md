@@ -1,5 +1,18 @@
 # @mlaursen/eslint-config
 
+## 5.2.0
+
+### Minor Changes
+
+- Features:
+
+  - bump dependencies to latest
+
+  Fixes:
+
+  - Disabled `@typescript-eslint/unified-signatures` since you get better type inference with separate signatures
+  - Disabled `no-undef` and removed globals since I use typescript
+
 ## 5.1.3
 
 ### Patch Changes
