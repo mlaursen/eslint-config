@@ -1,5 +1,19 @@
 # @mlaursen/eslint-config
 
+## 6.0.0
+
+### Major Changes
+
+- Updated dependencies for the latest eslint rules and behavior.
+
+  - Bumped `eslint-plugin-testing-library` to v7.1.0
+  - Bumped `@next/eslint-plugin-next` to v15.0.4
+
+- Updated dependencies for the latest eslint rules and behavior.
+
+  - Bumped `eslint-plugin-testing-library` to v7.1.0
+  - Bumped `@next/eslint-plugin-next` to v15.0.4
+
 ## 6.0.0-next.0
 
 ### Major Changes
