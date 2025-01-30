@@ -31,7 +31,7 @@ export default config(gitignore(import.meta.url), ...configs.frontendTypeCheckin
 // const strict = true || process.env.STRICT_TYPING === 'true';
 const strict = process.env.STRICT_TYPING === 'true';
 const frontend = strict ? configs.frontendTypeChecking(import.meta.dirname) : configs.frontend
-export default (gitignore(import.meta.url), ...frontend);
+export default config(gitignore(import.meta.url), ...frontend);
 ```
 
 The `config` export is the `typescript-eslint.config()` function to provide type
