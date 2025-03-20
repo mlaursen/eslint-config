@@ -91,14 +91,17 @@ export const typescriptTypeChecking = (
   ...typescript,
   ...tseslint.configs.strictTypeCheckedOnly,
   {
-    name: `${BASE_NAME}/typescript-type-checking`,
-    files: TS_FILES,
+    name: `${BASE_NAME}/typescript-type-checking-language-options`,
     languageOptions: {
       parserOptions: {
         projectService: true,
         tsconfigRootDir,
       },
     },
+  },
+  {
+    name: `${BASE_NAME}/typescript-type-checking`,
+    files: TS_FILES,
     rules: {
       // I do not enable the `noUncheckedIndexedAccess` tsconfig option, so I
       // still need to verify that stuff exists. There are other cases where I

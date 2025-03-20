@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { execSync } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { version } from "../package.json" assert { type: "json" };
 
 const exec = (command: string, inherit = false): void => {
   console.log(command);
@@ -56,8 +57,6 @@ async function createRelease(options: CreateReleaseOptions): Promise<void> {
 }
 
 async function getReleaseVersion(): Promise<string> {
-  const version = JSON.parse(await readFile("package.json", "utf8")).version;
-
   if (
     await confirm({
       message: `Is "${version}" the next github release version?`,
@@ -121,4 +120,4 @@ async function run(): Promise<void> {
   });
 }
 
-run();
+void run();
