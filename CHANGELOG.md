@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 6.1.0
+
+### Minor Changes
+
+- Updated dependencies and rules to the latest versions.
+
 ## 6.0.0
 
 ### Major Changes
