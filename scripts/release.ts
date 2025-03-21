@@ -58,6 +58,7 @@ async function createRelease(options: CreateReleaseOptions): Promise<void> {
 }
 
 async function getCurrentChangeset(disableAuto?: boolean): Promise<string> {
+  const MANUAL_CHANGESET = "Manually Enter";
   let changesetName = "";
   if (!disableAuto) {
     changesetName = execSync("git diff --name-only @{upstream} .changeset/*.md")
@@ -78,8 +79,16 @@ async function getCurrentChangeset(disableAuto?: boolean): Promise<string> {
         .filter((changeset) => changeset.endsWith(".md"))
         .map((changeset) => ({
           value: changeset,
-        })),
+        }))
+        .concat([{ value: MANUAL_CHANGESET }]),
     });
+
+    if (changesetName === MANUAL_CHANGESET) {
+      return await input({
+        message: "Manually provide the changeset:",
+      });
+    }
+
     changesetName = join(".changeset", changesetName);
   }
 

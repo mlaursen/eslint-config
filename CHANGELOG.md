@@ -1,5 +1,12 @@
 # @mlaursen/eslint-config
 
+## 7.0.0
+
+### Major Changes
+
+- 6a3b2a5: Updated to only support ESM
+- I'm not sure if this is really a breaking change, but updated to be ESM.
+
 ## 7.0.0-next.0
 
 ### Major Changes

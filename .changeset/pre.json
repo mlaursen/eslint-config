@@ -1,8 +1,0 @@
-{
-  "mode": "pre",
-  "tag": "next",
-  "initialVersions": {
-    "@mlaursen/eslint-config": "6.1.0"
-  },
-  "changesets": ["lemon-showers-greet"]
-}
