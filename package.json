@@ -1,5 +1,6 @@
 {
   "name": "@mlaursen/eslint-config",
+  "type": "module",
   "version": "6.1.0",
   "description": "An eslint config used by mlaursen for most projects.",
   "repository": "https://github.com/mlaursen/eslint-config.git",
@@ -8,6 +9,8 @@
   "scripts": {
     "prepare": "husky",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "watch-typecheck": "pnpm run typecheck --watch",
     "format": "prettier --write .",
     "clean": "rm -rf dist",
     "build": "tsc -p tsconfig.build.json",

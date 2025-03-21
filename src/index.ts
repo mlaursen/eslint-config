@@ -1,13 +1,16 @@
 import { config } from "typescript-eslint";
-import { base } from "./base";
-import { frontend, frontendTypeChecking } from "./frontend";
-import { gitignore } from "./gitignore";
-import { jest, jestDom } from "./jest";
-import { jsxA11y } from "./jsxA11y";
-import { next } from "./next";
-import { react } from "./react";
-import { testingLibraryDom, testingLibraryReact } from "./testing-library";
-import { typescript, typescriptTypeChecking } from "./typescript";
+import { base } from "./base.js";
+import { frontend, frontendTypeChecking } from "./frontend.js";
+import { gitignore } from "./gitignore.js";
+import { jest, jestDom } from "./jest.js";
+import { jsxA11y } from "./jsxA11y.js";
+import { next } from "./next.js";
+import { react } from "./react.js";
+import { testingLibraryDom, testingLibraryReact } from "./testing-library.js";
+import { typescript, typescriptTypeChecking } from "./typescript.js";
+
+export * from "./constants.js";
+export { config, gitignore };
 
 export const configs = {
   base,
@@ -23,7 +26,6 @@ export const configs = {
   jsxA11y,
   next,
 } as const;
-export { config, gitignore };
 
 export default {
   config,

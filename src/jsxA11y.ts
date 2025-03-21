@@ -1,6 +1,6 @@
 import { type TSESLint } from "@typescript-eslint/utils";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
-import { BASE_NAME, JSX_FILES, TEST_FILES } from "./constants";
+import { BASE_NAME, JSX_FILES, TEST_FILES } from "./constants.js";
 
 /**
  * @example

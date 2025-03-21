@@ -1,9 +1,9 @@
 import { type TSESLint } from "@typescript-eslint/utils";
-import { jest, jestDom } from "./jest";
-import { jsxA11y } from "./jsxA11y";
-import { react } from "./react";
-import { testingLibraryReact } from "./testing-library";
-import { typescript, typescriptTypeChecking } from "./typescript";
+import { jest, jestDom } from "./jest.js";
+import { jsxA11y } from "./jsxA11y.js";
+import { react } from "./react.js";
+import { testingLibraryReact } from "./testing-library.js";
+import { typescript, typescriptTypeChecking } from "./typescript.js";
 
 /**
  * @example

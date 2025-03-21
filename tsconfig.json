@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "nodenext",
+    "module": "NodeNext",
     "strict": true,
     "noEmit": true,
     "allowJs": true,

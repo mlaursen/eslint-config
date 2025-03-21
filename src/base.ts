@@ -1,6 +1,6 @@
 import eslint from "@eslint/js";
 import { type TSESLint } from "@typescript-eslint/utils";
-import { BASE_NAME, DEV_WARNING_PROD_ERROR } from "./constants";
+import { BASE_NAME, DEV_WARNING_PROD_ERROR } from "./constants.js";
 
 /**
  * @example

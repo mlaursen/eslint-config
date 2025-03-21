@@ -1,7 +1,7 @@
 import { type TSESLint } from "@typescript-eslint/utils";
 import jestPlugin from "eslint-plugin-jest";
 import jestDomPlugin from "eslint-plugin-jest-dom";
-import { BASE_NAME, TEST_FILES } from "./constants";
+import { BASE_NAME, TEST_FILES } from "./constants.js";
 
 /**
  * @example

@@ -1,7 +1,7 @@
 import { type TSESLint } from "@typescript-eslint/utils";
 import tseslint from "typescript-eslint";
-import { base } from "./base";
-import { BASE_NAME, TEST_FILES, TS_FILES } from "./constants";
+import { base } from "./base.js";
+import { BASE_NAME, TEST_FILES, TS_FILES } from "./constants.js";
 
 /**
  * @example

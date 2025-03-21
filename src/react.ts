@@ -1,7 +1,7 @@
 import { type TSESLint } from "@typescript-eslint/utils";
 import reactPlugin, { type ReactFlatConfig } from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
-import { BASE_NAME, JSX_FILES } from "./constants";
+import { BASE_NAME, JSX_FILES } from "./constants.js";
 
 // Why is the typedef optional?
 const flat = reactPlugin.configs.flat as Record<

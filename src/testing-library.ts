@@ -1,7 +1,7 @@
 import { fixupPluginRules } from "@eslint/compat";
 import { type TSESLint } from "@typescript-eslint/utils";
 import testingLibraryPlugin from "eslint-plugin-testing-library";
-import { BASE_NAME, TEST_FILES } from "./constants";
+import { BASE_NAME, TEST_FILES } from "./constants.js";
 
 const testingLibrary: TSESLint.FlatConfig.Config = {
   files: TEST_FILES,

@@ -1,7 +1,7 @@
 import { fixupPluginRules } from "@eslint/compat";
 import nextPlugin from "@next/eslint-plugin-next";
 import { type TSESLint } from "@typescript-eslint/utils";
-import { BASE_NAME } from "./constants";
+import { BASE_NAME } from "./constants.js";
 
 /**
  * @example

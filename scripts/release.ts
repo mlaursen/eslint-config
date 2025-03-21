@@ -4,7 +4,12 @@ import dotenv from "dotenv";
 import { execSync } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { version } from "../package.json" assert { type: "json" };
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const version: string = JSON.parse(
+  await readFile("package.json", "utf8")
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+).version;
 
 const exec = (command: string, inherit = false): void => {
   console.log(command);
