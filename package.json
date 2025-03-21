@@ -14,8 +14,7 @@
     "format": "prettier --write .",
     "clean": "rm -rf dist",
     "build": "tsc -p tsconfig.build.json",
-    "run-script": "tsx --tsconfig scripts/tsconfig.json",
-    "release": "pnpm run run-script scripts/release.ts"
+    "release": "tsx scripts/release.ts"
   },
   "files": [
     "dist/"

@@ -5,15 +5,11 @@ import { execSync } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const version: string = JSON.parse(
-  await readFile("package.json", "utf8")
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-).version;
+const isPreRelease = process.argv.includes("--pre");
 
-const exec = (command: string, inherit = false): void => {
+const exec = (command: string): void => {
   console.log(command);
-  execSync(command, { stdio: inherit ? "inherit" : undefined });
+  execSync(command);
 };
 
 interface CreateReleaseOptions {
@@ -61,21 +57,7 @@ async function createRelease(options: CreateReleaseOptions): Promise<void> {
   }
 }
 
-async function getReleaseVersion(): Promise<string> {
-  if (
-    await confirm({
-      message: `Is "${version}" the next github release version?`,
-    })
-  ) {
-    return version;
-  }
-
-  return await input({
-    message: "Input the next release version for Github",
-  });
-}
-
-async function getCurrentChangelog(disableAuto?: boolean): Promise<string> {
+async function getCurrentChangeset(disableAuto?: boolean): Promise<string> {
   let changesetName = "";
   if (!disableAuto) {
     changesetName = execSync("git diff --name-only @{upstream} .changeset/*.md")
@@ -104,25 +86,59 @@ async function getCurrentChangelog(disableAuto?: boolean): Promise<string> {
   return await readFile(changesetName, "utf8");
 }
 
-async function run(): Promise<void> {
-  exec("pnpm clean");
-  exec("pnpm build");
-  exec("pnpm changeset", true);
-  const changeset = await getCurrentChangelog();
+async function getReleaseVersion(): Promise<string> {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const version: string = JSON.parse(
+    await readFile("package.json", "utf8")
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  ).version;
 
-  exec("pnpm changeset version", true);
-  const version = await getReleaseVersion();
-  exec("git add -u");
+  if (
+    await confirm({
+      message: `Is "${version}" the next github release version?`,
+    })
+  ) {
+    return version;
+  }
 
-  exec('git commit -m "build(version): version packages"');
-  exec("pnpm changeset publish", true);
-  exec("git push --follow-tags");
-
-  await createRelease({
-    body: changeset,
-    version,
-    prerelease: false,
+  return await input({
+    message: "Input the next release version for Github",
   });
 }
 
-void run();
+exec("pnpm clean");
+exec("pnpm build");
+
+if (isPreRelease) {
+  exec("pnpm changeset pre enter next");
+}
+
+console.log(`Run the following commands in another terminal since I don't know how to get it to work in this script.
+
+pnpm changeset
+pnpm changeset version
+`);
+
+if (!(await confirm({ message: "Continue the release?" }))) {
+  process.exit(1);
+}
+
+exec("git add -u");
+exec("git add .changeset");
+
+const changeset = await getCurrentChangeset();
+const version = await getReleaseVersion();
+
+exec('git commit -m "build(version): version packages"');
+console.log(`Run the following command in another terminal since I don't know how to get it to work in this script.
+
+pnpm changeset publish
+`);
+await confirm({ message: "Have the packages been published?" });
+exec("git push --follow-tags");
+
+await createRelease({
+  body: changeset,
+  version,
+  prerelease: isPreRelease || version.includes("-next"),
+});
