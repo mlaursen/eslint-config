@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 7.0.0-next.0
+
+### Major Changes
+
+- Updated to only support ESM
+
 ## 6.1.0
 
 ### Minor Changes
