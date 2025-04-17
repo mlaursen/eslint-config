@@ -1,15 +1,6 @@
-import { fixupPluginRules } from "@eslint/compat";
 import { type TSESLint } from "@typescript-eslint/utils";
 import testingLibraryPlugin from "eslint-plugin-testing-library";
 import { BASE_NAME, TEST_FILES } from "./constants.js";
-
-const testingLibrary: TSESLint.FlatConfig.Config = {
-  files: TEST_FILES,
-  plugins: {
-    // @ts-expect-error There is a bad typing atm
-    "testing-library": fixupPluginRules(testingLibraryPlugin),
-  },
-};
 
 /**
  * @example
@@ -29,11 +20,9 @@ const testingLibrary: TSESLint.FlatConfig.Config = {
  */
 export const testingLibraryReact: TSESLint.FlatConfig.ConfigArray = [
   {
-    ...testingLibrary,
     name: `${BASE_NAME}/testing-library/react`,
-    rules: {
-      ...testingLibraryPlugin.configs["flat/react"].rules,
-    },
+    files: TEST_FILES,
+    ...testingLibraryPlugin.configs["flat/react"],
   },
 ];
 
@@ -54,10 +43,8 @@ export const testingLibraryReact: TSESLint.FlatConfig.ConfigArray = [
  */
 export const testingLibraryDom: TSESLint.FlatConfig.ConfigArray = [
   {
-    ...testingLibrary,
     name: `${BASE_NAME}/testing-library/dom`,
-    rules: {
-      ...testingLibraryPlugin.configs["flat/dom"].rules,
-    },
+    files: TEST_FILES,
+    ...testingLibraryPlugin.configs["flat/dom"],
   },
 ];
