@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@mlaursen/eslint-config": "7.0.0"
+  },
+  "changesets": ["fair-games-own"]
+}
