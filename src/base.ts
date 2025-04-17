@@ -7,7 +7,7 @@ import { BASE_NAME, DEV_WARNING_PROD_ERROR } from "./constants.js";
  * ```js
  * import { config, configs } from "@mlaursen/eslint-config";
  *
- * export default configs.base;
+ * export default config(...configs.base);
  * ```
  */
 export const base: TSESLint.FlatConfig.ConfigArray = [

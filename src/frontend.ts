@@ -12,7 +12,7 @@ import { typescript, typescriptTypeChecking } from "./typescript.js";
  *
  * export default config(
  *   gitignore(import.meta.url),
- *   ...configs.typescript
+ *   ...configs.frontend
  * );
  * ```
  */
@@ -32,7 +32,7 @@ export const frontend: TSESLint.FlatConfig.ConfigArray = [
  *
  * export default config(
  *   gitignore(import.meta.url),
- *   ...configs.typescriptTypeChecking(import.meta.dirname)
+ *   ...configs.frontendTypeChecking(import.meta.dirname)
  * );
  * ```
  */

@@ -82,7 +82,10 @@ export const typescript: TSESLint.FlatConfig.ConfigArray = [
  * // @ts-check
  * import { config, configs, gitignore } from "@mlaursen/eslint-config";
  *
- * export default config(gitignore(import.meta.url), ...configs.typescriptTypeChecking(import.meta.dirname));
+ * export default config(
+ *   gitignore(import.meta.url),
+ *   ...configs.typescriptTypeChecking(import.meta.dirname)
+ * );
  * ```
  */
 export const typescriptTypeChecking = (
