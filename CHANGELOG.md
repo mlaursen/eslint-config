@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 7.1.0
+
+### Minor Changes
+
+- 9b65a95: Updated dependencies to latest and update type definitions.
+
 ## 7.1.0-next.0
 
 ### Minor Changes
