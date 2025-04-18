@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 8.0.0-next.0
+
+### Major Changes
+
+- Added support for vitest. This causes breaking changes by making the `frontend` and `frontendTypeChecking` to require a test framework to be provided.
+
 ## 7.1.0
 
 ### Minor Changes

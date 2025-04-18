@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@mlaursen/eslint-config": "7.1.0"
+  },
+  "changesets": ["huge-ties-vanish"]
+}
