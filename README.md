@@ -69,6 +69,39 @@ The `config` export is the `typescript-eslint.config()` function to provide type
 definitions and `gitignore` automatically ignores files from linting based on
 your `.gitignore` rules.
 
+## Next.js Setup
+
+This is no longer included in this eslint-config since it requires the eslint plugin to be installed
+in the project to work. Here are the setup steps:
+
+```sh
+npm install -D @eslint/eslintrc @next/eslint-plugin-next
+yarn add -D @eslint/eslintrc @next/eslint-plugin-next
+pnpm add -D @eslint/eslintrc @next/eslint-plugin-next
+```
+
+```diff
+ // @ts-check
++import { FlatCompat } from "@eslint/eslintrc";
+ import { config, configs, gitignore } from "@mlaursen/eslint-config";
+
++const compat = new FlatCompat({
++  baseDirectory: import.meta.dirname,
++});
++
+
+ // somewhat strict type checking
+ export default config(
+   gitignore(import.meta.url),
++  ...compat.config({
++    extends: ["plugin:@next/next/recommended"],
++    // or with core-web-vitals
++    // extends: ["plugin:@next/next/core-web-vitals"],
++  }),
+   ...configs.frontend("jest")
+ );
+```
+
 ## Configs
 
 I normally just use the `frontend` or `frontendTypeChecking` configs, but the
