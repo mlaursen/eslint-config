@@ -10,18 +10,42 @@ Starting at `5.0.0`, I only support `eslint@^9` or greater.
 npm install -D eslint @mlaursen/eslint-config
 ```
 
-Then create an `eslint.config.mjs` with the following:
+Then create an `eslint.config.mjs` with one of the following:
 
 ```js
 // @ts-check
 import { config, configs, gitignore } from "@mlaursen/eslint-config";
 
-// choose the config you want to use:
 // somewhat strict type checking
-export default config(gitignore(import.meta.url), ...configs.frontend);
+export default config(gitignore(import.meta.url), ...configs.frontend("jest"));
+
+// or with vitest
+// export default config(
+//   gitignore(import.meta.url),
+//   ...configs.frontend("vitest")
+// );
+```
+
+```js
+// @ts-check
+import { config, configs, gitignore } from "@mlaursen/eslint-config";
 
 // strict type checking
-export default config(gitignore(import.meta.url), ...configs.frontendTypeChecking(import.meta.dirname));
+export default config(
+  gitignore(import.meta.url),
+  ...configs.frontendTypeChecking(import.meta.dirname, "jest")
+);
+
+// or with vitest
+// export default config(
+//   gitignore(import.meta.url),
+//   ...configs.frontendTypeChecking(import.meta.dirname, "vitest")
+// );
+```
+
+```js
+// @ts-check
+import { config, configs, gitignore } from "@mlaursen/eslint-config";
 
 // NOTE: This is recommended for strict type checking. Callable as:
 // `cross-env STRICT_TYPING=true eslint "**/*.{ts,tsx,mts,mtsx,js,jsx,mjs,cjs}`
@@ -29,8 +53,15 @@ export default config(gitignore(import.meta.url), ...configs.frontendTypeCheckin
 // strict type checking with an environment variable. uncomment the following
 // line to enable it in your editor
 // const strict = true || process.env.STRICT_TYPING === 'true';
-const strict = process.env.STRICT_TYPING === 'true';
-const frontend = strict ? configs.frontendTypeChecking(import.meta.dirname) : configs.frontend
+const strict = process.env.STRICT_TYPING === "true";
+const frontend = strict
+  ? configs.frontendTypeChecking(import.meta.dirname, "jest")
+  : configs.frontend("jest");
+
+// or with vitest
+// const frontend = strict
+//   ? configs.frontendTypeChecking(import.meta.dirname, "vitest")
+//   : configs.frontend("vitest");
 export default config(gitignore(import.meta.url), ...frontend);
 ```
 
@@ -48,8 +79,10 @@ others can be used individually if needed.
 - [base](#base)
 - [typescript](#typescript)
 - [typescriptTypeChecking](#typescripttypechecking)
+- [testing](#testing)
 - [jest](#jest)
 - [jestDom](#jestdom)
+- [vitest](#vitest)
 - [testingLibraryReact](#testinglibraryreact)
 - [testingLibraryDom](#testinglibrarydom)
 - [react](#react)
@@ -100,9 +133,23 @@ import { config, configs } from "@mlaursen/eslint-config";
 export default config(...configs.typescriptTypeChecking(import.meta.dirname));
 ```
 
+### testing
+
+This enables the [jest](#jest) or [vitest](#vitest) rules along with [jestDom](#jestdom).
+
+```js
+// @ts-check
+import { config, configs } from "@mlaursen/eslint-config";
+
+export default config(...configs.testing("jest"));
+
+// or vitest
+export default config(...configs.testing("vitest"));
+```
+
 ### jest
 
-This only enables the `eslint-plugin-jest.configs['flat/recommended]` rules on tests files.
+This only enables the `eslint-plugin-jest.configs['flat/recommended]` rules on tests files and should not be used if using [testing](#testing).
 
 ```js
 // @ts-check
@@ -113,7 +160,7 @@ export default config(...configs.jest);
 
 ### jestDom
 
-This only enables the `eslint-plugin-jest-dom.configs['flat/recommended]` rules on tests files.
+This only enables the `eslint-plugin-jest-dom.configs['flat/recommended]` rules on tests files and should not be used if using [testing](#testing).
 
 ```js
 // @ts-check
@@ -122,9 +169,20 @@ import { config, configs } from "@mlaursen/eslint-config";
 export default config(...configs.jestDom);
 ```
 
+### vitest
+
+This only enables the `@vitest/eslint-plugin` rules on test files and should not be used if using [testing](#testing).
+
 ### testingLibraryReact
 
 This enables the `eslint-plugin-testing-library/.configs["flat/react]` plugin and rules on test files.
+
+```js
+// @ts-check
+import { config, configs } from "@mlaursen/eslint-config";
+
+export default config(...configs.vitest);
+```
 
 ```js
 // @ts-check
@@ -176,19 +234,22 @@ This is a small wrapper around the `@next/eslint-plugin-next` that works with es
 // @ts-check
 import { config, configs } from "@mlaursen/eslint-config";
 
-export default config(...configs.next);
+export default config(...configs.next(import.meta.dirname));
 ```
 
 ### frontend
 
-This is my normal frontend repo setup with `react`, `jsxA11y`, `jest`,
-`jest-dom`, `typescript`, `testing-library/react`.
+This is my normal frontend repo setup with `react`, `jsxA11y`, `jest` or
+`vitest`, `jest-dom`, `typescript`, `testing-library/react`.
 
 ```js
 // @ts-check
 import { config, configs } from "@mlaursen/eslint-config";
 
-export default config(...configs.frontend);
+export default config(...configs.frontend("jest"));
+
+// or with vitest
+export default config(...configs.frontend("vitest"));
 ```
 
 ### frontendTypeChecking
@@ -199,5 +260,8 @@ Same as the [frontend](#frontend), but enables the strict type checking.
 // @ts-check
 import { config, configs } from "@mlaursen/eslint-config";
 
-export default config(...configs.frontendTypeChecking(import.meta.dirname));
+export default config(...configs.frontendTypeChecking(import.meta.dirname, "jest"));
+
+// or with vitest
+export default config(...configs.frontendTypeChecking(import.meta.dirname, "vitest"));
 ```

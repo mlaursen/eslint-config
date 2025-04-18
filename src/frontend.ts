@@ -1,8 +1,8 @@
 import { type TSESLint } from "@typescript-eslint/utils";
-import { jest, jestDom } from "./jest.js";
 import { jsxA11y } from "./jsxA11y.js";
 import { react } from "./react.js";
 import { testingLibraryReact } from "./testing-library.js";
+import { type TestFramework, testing } from "./testing.js";
 import { typescript, typescriptTypeChecking } from "./typescript.js";
 
 /**
@@ -16,12 +16,13 @@ import { typescript, typescriptTypeChecking } from "./typescript.js";
  * );
  * ```
  */
-export const frontend: TSESLint.FlatConfig.ConfigArray = [
+export const frontend = (
+  testFramework: TestFramework = "jest"
+): TSESLint.FlatConfig.ConfigArray => [
   ...typescript,
   ...react,
   ...jsxA11y,
-  ...jest,
-  ...jestDom,
+  ...testing(testFramework),
   ...testingLibraryReact,
 ];
 
@@ -37,12 +38,12 @@ export const frontend: TSESLint.FlatConfig.ConfigArray = [
  * ```
  */
 export const frontendTypeChecking = (
-  tsconfigRootDir: string
+  tsconfigRootDir: string,
+  testFramework: TestFramework = "jest"
 ): TSESLint.FlatConfig.ConfigArray => [
   ...typescriptTypeChecking(tsconfigRootDir),
   ...react,
   ...jsxA11y,
-  ...jest,
-  ...jestDom,
+  ...testing(testFramework),
   ...testingLibraryReact,
 ];
