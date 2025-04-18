@@ -87,7 +87,6 @@ others can be used individually if needed.
 - [testingLibraryDom](#testinglibrarydom)
 - [react](#react)
 - [jsxA11y](#jsxa11y)
-- [next](#next)
 - [frontend](#frontend)
 - [frontendTypeChecking](#frontendtypechecking)
 
@@ -224,17 +223,6 @@ This enables `eslint-plugin-jsx-a11y`:
 import { config, configs } from "@mlaursen/eslint-config";
 
 export default config(...configs.jsxA11y);
-```
-
-### next
-
-This is a small wrapper around the `@next/eslint-plugin-next` that works with eslint v9.
-
-```js
-// @ts-check
-import { config, configs } from "@mlaursen/eslint-config";
-
-export default config(...configs.next(import.meta.dirname));
 ```
 
 ### frontend

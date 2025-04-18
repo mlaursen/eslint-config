@@ -12,12 +12,13 @@ import { typescript, typescriptTypeChecking } from "./typescript.js";
  *
  * export default config(
  *   gitignore(import.meta.url),
- *   ...configs.frontend
+ *   ...configs.frontend("jest")
+ *   // ...configs.frontend("vitest")
  * );
  * ```
  */
 export const frontend = (
-  testFramework: TestFramework = "jest"
+  testFramework: TestFramework
 ): TSESLint.FlatConfig.ConfigArray => [
   ...typescript,
   ...react,
@@ -33,13 +34,14 @@ export const frontend = (
  *
  * export default config(
  *   gitignore(import.meta.url),
- *   ...configs.frontendTypeChecking(import.meta.dirname)
+ *   ...configs.frontendTypeChecking(import.meta.dirname, "jest")
+ *   // ...configs.frontendTypeChecking(import.meta.dirname, "vitest"),
  * );
  * ```
  */
 export const frontendTypeChecking = (
   tsconfigRootDir: string,
-  testFramework: TestFramework = "jest"
+  testFramework: TestFramework
 ): TSESLint.FlatConfig.ConfigArray => [
   ...typescriptTypeChecking(tsconfigRootDir),
   ...react,
