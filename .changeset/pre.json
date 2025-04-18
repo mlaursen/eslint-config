@@ -4,5 +4,5 @@
   "initialVersions": {
     "@mlaursen/eslint-config": "7.1.0"
   },
-  "changesets": ["huge-ties-vanish"]
+  "changesets": ["huge-ties-vanish", "stale-guests-feel"]
 }

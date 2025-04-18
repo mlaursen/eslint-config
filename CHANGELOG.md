@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 8.0.0-next.1
+
+### Patch Changes
+
+- Removed next.js eslint config since it requires the plugin to be installed in the project.
+
 ## 8.0.0-next.0
 
 ### Major Changes
