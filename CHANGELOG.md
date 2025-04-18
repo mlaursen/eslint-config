@@ -1,5 +1,15 @@
 # @mlaursen/eslint-config
 
+## 8.0.0
+
+### Major Changes
+
+- `frontend` and `frontendTypeChecking` are both functions that require a test framework to be provided
+- `next` config is no longer included and instead shown on the README how to setup
+- Added support for vitest
+- 223e34e: Added support for vitest. This causes breaking changes by making the `frontend` and `frontendTypeChecking` to require a test framework to be provided.
+- 865a0a2: Removed next.js eslint config since it requires the plugin to be installed in the project.
+
 ## 8.0.0-next.1
 
 ### Patch Changes
