@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 8.0.1
+
+### Patch Changes
+
+- Added missing rules after upgrading to eslint flat config. Also updated dependencies to latest.
+
 ## 8.0.1-next.0
 
 ### Patch Changes
