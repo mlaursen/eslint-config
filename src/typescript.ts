@@ -3,17 +3,7 @@ import tseslint from "typescript-eslint";
 import { base } from "./base.js";
 import { BASE_NAME, TEST_FILES, TS_FILES } from "./constants.js";
 
-/**
- * @example
- * ```ts
- * import { config, configs, gitignore } from "@mlaursen/eslint-config";
- *
- * export default config(gitignore(import.meta.url), ...configs.typescript);
- * ```
- */
-export const typescript: TSESLint.FlatConfig.ConfigArray = [
-  ...base,
-  ...tseslint.configs.strict,
+const customTypescript: TSESLint.FlatConfig.ConfigArray = [
   {
     name: `${BASE_NAME}/typescript`,
     files: TS_FILES,
@@ -79,6 +69,20 @@ export const typescript: TSESLint.FlatConfig.ConfigArray = [
 /**
  * @example
  * ```ts
+ * import { config, configs, gitignore } from "@mlaursen/eslint-config";
+ *
+ * export default config(gitignore(import.meta.url), ...configs.typescript);
+ * ```
+ */
+export const typescript: TSESLint.FlatConfig.ConfigArray = [
+  ...base,
+  ...tseslint.configs.strict,
+  ...customTypescript,
+];
+
+/**
+ * @example
+ * ```ts
  * // @ts-check
  * import { config, configs, gitignore } from "@mlaursen/eslint-config";
  *
@@ -102,6 +106,7 @@ export const typescriptTypeChecking = (
       },
     },
   },
+  ...customTypescript,
   {
     name: `${BASE_NAME}/typescript-type-checking`,
     files: TS_FILES,
