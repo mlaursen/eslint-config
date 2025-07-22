@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@mlaursen/eslint-config": "8.0.1"
+  },
+  "changesets": ["ready-parents-strive"]
+}

@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 8.0.2-next.0
+
+### Patch Changes
+
+- Updated dependencies to latest
+
 ## 8.0.1
 
 ### Patch Changes
@@ -70,12 +76,10 @@
 ### Major Changes
 
 - Updated dependencies for the latest eslint rules and behavior.
-
   - Bumped `eslint-plugin-testing-library` to v7.1.0
   - Bumped `@next/eslint-plugin-next` to v15.0.4
 
 - Updated dependencies for the latest eslint rules and behavior.
-
   - Bumped `eslint-plugin-testing-library` to v7.1.0
   - Bumped `@next/eslint-plugin-next` to v15.0.4
 
@@ -84,7 +88,6 @@
 ### Major Changes
 
 - Updated dependencies for the latest eslint rules and behavior.
-
   - Bumped `eslint-plugin-testing-library` to v7.1.0
   - Bumped `@next/eslint-plugin-next` to v15.0.4
 
@@ -93,11 +96,9 @@
 ### Minor Changes
 
 - Features:
-
   - bump dependencies to latest
 
   Fixes:
-
   - Disabled `@typescript-eslint/unified-signatures` since you get better type inference with separate signatures
   - Disabled `no-undef` and removed globals since I use typescript
 
@@ -106,7 +107,6 @@
 ### Patch Changes
 
 - The release focused on improving docs and debugging:
-
   - added a `name` to each configuration so it can be inspected more easily with `npx @eslint/config-inspector@latest`
   - added tsdoc to each configuration object so it can be viewed from editor
   - export `globals` so additional globals can be added easily
@@ -118,7 +118,6 @@
 ### Patch Changes
 
 - There were a few changes in this release:
-
   - attempt to fix the globals issue when using react/jsx-a11y
   - allow less strict typescript behavior in tests
   - fix some typescript rules that conflicted with base js
