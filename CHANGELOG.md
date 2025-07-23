@@ -1,5 +1,12 @@
 # @mlaursen/eslint-config
 
+## 8.0.2
+
+### Patch Changes
+
+- c0d08d8: Updated dependencies to latest
+- Bumped safe dependencies to latest.
+
 ## 8.0.2-next.0
 
 ### Patch Changes
