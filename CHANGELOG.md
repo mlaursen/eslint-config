@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 8.0.3
+
+### Patch Changes
+
+- Bumped @eslint/js and eslint-plugin-testing-library to latest
+
 ## 8.0.2
 
 ### Patch Changes
