@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 9.0.1
+
+### Patch Changes
+
+- Typescript definition fixes after switching to Linter.Config instead of TSEslint.Config.FlatConfig
+
 ## 9.0.0
 
 ### Major Changes
