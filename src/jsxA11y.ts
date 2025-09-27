@@ -1,21 +1,23 @@
-import { type TSESLint } from "@typescript-eslint/utils";
+import { type Linter } from "eslint";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import { BASE_NAME, JSX_FILES, TEST_FILES } from "./constants.js";
 
 /**
  * @example
  * ```ts
- * import { config, configs } from "@mlaursen/eslint-config";
+ * import { configs, defineConfig } from "@mlaursen/eslint-config";
  *
- * export default config(...configs.jsxA11y);
+ * export default defineConfig(...configs.jsxA11y);
  * ```
  */
-export const jsxA11y: TSESLint.FlatConfig.ConfigArray = [
+export const jsxA11y: Linter.Config[] = [
+  // @ts-expect-error Mismatch with languageOptions
   {
     name: `${BASE_NAME}/jsx-a11y`,
     files: JSX_FILES,
     ...jsxA11yPlugin.flatConfigs.recommended,
     rules: {
+      ...jsxA11yPlugin.flatConfigs.recommended.rules,
       // I **only** use autoFocus within dialogs which provide the correct
       // context for screen readers.
       "jsx-a11y/no-autofocus": "off",

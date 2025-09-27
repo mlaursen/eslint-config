@@ -1,5 +1,5 @@
 import eslint from "@eslint/js";
-import { type TSESLint } from "@typescript-eslint/utils";
+import { type Linter } from "eslint";
 import { BASE_NAME, DEV_WARNING_PROD_ERROR } from "./constants.js";
 
 /**
@@ -10,7 +10,7 @@ import { BASE_NAME, DEV_WARNING_PROD_ERROR } from "./constants.js";
  * export default config(...configs.base);
  * ```
  */
-export const base: TSESLint.FlatConfig.ConfigArray = [
+export const base: Linter.Config[] = [
   eslint.configs.recommended,
   {
     name: `${BASE_NAME}/base`,

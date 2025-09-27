@@ -1,5 +1,5 @@
-import { type TSESLint } from "@typescript-eslint/utils";
 import vitestPlugin from "@vitest/eslint-plugin";
+import { type Linter } from "eslint";
 import jestPlugin from "eslint-plugin-jest";
 import jestDomPlugin from "eslint-plugin-jest-dom";
 import { BASE_NAME, DEV_WARNING_PROD_ERROR, TEST_FILES } from "./constants.js";
@@ -14,11 +14,12 @@ export type TestFramework = "jest" | "vitest";
  * export default config(...configs.vitest);
  * ```
  */
-export const vitest: TSESLint.FlatConfig.ConfigArray = [
+export const vitest: Linter.Config[] = [
   {
     name: `${BASE_NAME}/vitest`,
     files: TEST_FILES,
     plugins: {
+      // @ts-expect-error Invalid Linter.Config type
       vitest: vitestPlugin,
     },
     rules: {
@@ -43,7 +44,7 @@ export const vitest: TSESLint.FlatConfig.ConfigArray = [
  * export default config(...configs.jest);
  * ```
  */
-export const jest: TSESLint.FlatConfig.ConfigArray = [
+export const jest: Linter.Config[] = [
   {
     name: `${BASE_NAME}/jest`,
     files: TEST_FILES,
@@ -59,7 +60,7 @@ export const jest: TSESLint.FlatConfig.ConfigArray = [
  * export default config(...configs.jest, ...configs.jestDom);
  * ```
  */
-export const jestDom: TSESLint.FlatConfig.ConfigArray = [
+export const jestDom: Linter.Config[] = [
   {
     name: `${BASE_NAME}/jest-dom`,
     files: TEST_FILES,
@@ -78,10 +79,8 @@ export const jestDom: TSESLint.FlatConfig.ConfigArray = [
  * export default config(...configs.testing("vitest"));
  * ```
  */
-export const testing = (
-  framework: TestFramework
-): TSESLint.FlatConfig.ConfigArray => {
-  let config: TSESLint.FlatConfig.ConfigArray;
+export const testing = (framework: TestFramework): Linter.Config[] => {
+  let config: Linter.Config[];
   switch (framework) {
     case "jest":
       config = jest;

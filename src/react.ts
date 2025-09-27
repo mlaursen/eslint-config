@@ -1,23 +1,20 @@
-import { type TSESLint } from "@typescript-eslint/utils";
-import reactPlugin, { type ReactFlatConfig } from "eslint-plugin-react";
+import { type Linter } from "eslint";
+import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import { BASE_NAME, JSX_FILES } from "./constants.js";
 
 // Why is the typedef optional?
-const flat = reactPlugin.configs.flat as Record<
-  "recommended" | "jsx-runtime",
-  ReactFlatConfig
->;
-const reactPlugins = flat.recommended.plugins as TSESLint.FlatConfig.Plugins;
-const recommendedRules = flat.recommended.rules;
-const jsxRuntimeRules = flat["jsx-runtime"].rules;
+const flat = reactPlugin.configs.flat;
+const reactPlugins = flat.recommended?.plugins;
+const recommendedRules = flat.recommended?.rules;
+const jsxRuntimeRules = flat["jsx-runtime"]?.rules;
 
 /**
  * @example
  * ```ts
- * import { config, configs } from "@mlaursen/eslint-config";
+ * import { configs, defineConfig } from "@mlaursen/eslint-config";
  *
- * export default config(...configs.react);
+ * export default defineConfig(...configs.react);
  * ```
  *
  * Enables:
@@ -27,7 +24,7 @@ const jsxRuntimeRules = flat["jsx-runtime"].rules;
  * - `eslint-plugin-react-hooks` with:
  *   - recommended rules
  */
-export const react: TSESLint.FlatConfig.ConfigArray = [
+export const react: Linter.Config[] = [
   {
     name: `${BASE_NAME}/react`,
     files: JSX_FILES,

@@ -1,9 +1,9 @@
-import { type TSESLint } from "@typescript-eslint/utils";
+import { type Linter } from "eslint";
 import tseslint from "typescript-eslint";
 import { base } from "./base.js";
 import { BASE_NAME, TEST_FILES, TS_FILES } from "./constants.js";
 
-const customTypescript: TSESLint.FlatConfig.ConfigArray = [
+const customTypescript: Linter.Config[] = [
   {
     name: `${BASE_NAME}/typescript`,
     files: TS_FILES,
@@ -74,7 +74,7 @@ const customTypescript: TSESLint.FlatConfig.ConfigArray = [
  * export default config(gitignore(import.meta.url), ...configs.typescript);
  * ```
  */
-export const typescript: TSESLint.FlatConfig.ConfigArray = [
+export const typescript: Linter.Config[] = [
   ...base,
   ...tseslint.configs.strict,
   ...customTypescript,
@@ -94,7 +94,7 @@ export const typescript: TSESLint.FlatConfig.ConfigArray = [
  */
 export const typescriptTypeChecking = (
   tsconfigRootDir: string
-): TSESLint.FlatConfig.ConfigArray => [
+): Linter.Config[] => [
   ...typescript,
   ...tseslint.configs.strictTypeCheckedOnly,
   {

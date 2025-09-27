@@ -1,4 +1,4 @@
-import { type TSESLint } from "@typescript-eslint/utils";
+import { type Linter } from "eslint";
 import { jsxA11y } from "./jsxA11y.js";
 import { react } from "./react.js";
 import { testingLibraryReact } from "./testing-library.js";
@@ -17,9 +17,7 @@ import { typescript, typescriptTypeChecking } from "./typescript.js";
  * );
  * ```
  */
-export const frontend = (
-  testFramework: TestFramework
-): TSESLint.FlatConfig.ConfigArray => [
+export const frontend = (testFramework: TestFramework): Linter.Config[] => [
   ...typescript,
   ...react,
   ...jsxA11y,
@@ -42,7 +40,7 @@ export const frontend = (
 export const frontendTypeChecking = (
   tsconfigRootDir: string,
   testFramework: TestFramework
-): TSESLint.FlatConfig.ConfigArray => [
+): Linter.Config[] => [
   ...typescriptTypeChecking(tsconfigRootDir),
   ...react,
   ...jsxA11y,

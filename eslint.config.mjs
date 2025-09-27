@@ -1,7 +1,7 @@
 // @ts-check
-import { config, configs, gitignore } from "./dist/index.js";
+import { defineConfig, configs, gitignore } from "./dist/index.js";
 
-export default config(
+export default defineConfig(
   gitignore(import.meta.url),
   ...configs.typescriptTypeChecking(import.meta.dirname),
   {
