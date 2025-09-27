@@ -1,5 +1,29 @@
 # @mlaursen/eslint-config
 
+## 9.0.0
+
+### Major Changes
+
+- Breaking changes:
+  - Use `defineConfig` from `@eslintjs/config` instead of `config` from
+    `typescript-eslint`. This requires the following changes:
+
+  ```diff
+   // @ts-check
+  -import { config, configs, gitignore } from "@mlaursen/eslint-config";
+  +import { defineConfig, configs, gitignore } from "@mlaursen/eslint-config";
+
+   // somewhat strict type checking
+  -export default config(
+  +export default defineConfig(
+     gitignore(import.meta.url),
+     ...configs.frontend("jest")
+   );
+  ```
+
+  Other changes:
+  - Bumped dependencies to latest
+
 ## 8.0.3
 
 ### Patch Changes
