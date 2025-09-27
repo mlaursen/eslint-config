@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 9.0.2
+
+### Patch Changes
+
+- Hopefully fix eslint type mismatch
+
 ## 9.0.1
 
 ### Patch Changes
