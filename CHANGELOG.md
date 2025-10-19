@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 9.0.3
+
+### Patch Changes
+
+- Update packages to latest without major versions.
+
 ## 9.0.2
 
 ### Patch Changes
