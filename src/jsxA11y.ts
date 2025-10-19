@@ -11,7 +11,6 @@ import { BASE_NAME, JSX_FILES, TEST_FILES } from "./constants.js";
  * ```
  */
 export const jsxA11y: Linter.Config[] = [
-  // @ts-expect-error Mismatch with languageOptions
   {
     name: `${BASE_NAME}/jsx-a11y`,
     files: JSX_FILES,
