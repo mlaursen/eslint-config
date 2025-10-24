@@ -1,7 +1,8 @@
 // @ts-check
-import { defineConfig, configs, gitignore } from "./dist/index.js";
+import { defineConfig } from "eslint/config";
+import { configs, gitignore } from "./dist/index.js";
 
-export default defineConfig(
+export default defineConfig([
   gitignore(import.meta.url),
   ...configs.typescriptTypeChecking(import.meta.dirname),
   {
@@ -9,5 +10,5 @@ export default defineConfig(
     rules: {
       "no-console": "off",
     },
-  }
-);
+  },
+]);
