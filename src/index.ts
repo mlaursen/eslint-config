@@ -25,8 +25,3 @@ export const configs = {
   testing,
   vitest,
 } as const;
-
-export default {
-  configs,
-  gitignore,
-};
