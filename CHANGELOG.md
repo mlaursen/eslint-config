@@ -1,5 +1,15 @@
 # @mlaursen/eslint-config
 
+## 10.0.1
+
+### Patch Changes
+
+- Fixes
+  - Add `settings.react.version = "detect"` to remove warning
+
+  Features
+  - Add new scripts config to allow console in `scripts/**`
+
 ## 10.0.0
 
 ### Major Changes
