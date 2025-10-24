@@ -3,19 +3,16 @@ import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import { BASE_NAME, JSX_FILES } from "./constants.js";
 
-// Why is the typedef optional?
-const flat = reactPlugin.configs.flat;
-const reactPlugins = flat.recommended?.plugins;
-const recommendedRules = flat.recommended?.rules;
-const jsxRuntimeRules = flat["jsx-runtime"]?.rules;
-
 /**
  * @example
  * ```ts
  * import { configs } from "@mlaursen/eslint-config";
  * import { defineConfig } from "eslint/config";
  *
- * export default defineConfig(configs.react);
+ * export default defineConfig(configs.react());
+ *
+ * // or with react compiler rules enabled
+ * export default defineConfig(configs.react(true));
  * ```
  *
  * Enables:
@@ -24,31 +21,34 @@ const jsxRuntimeRules = flat["jsx-runtime"]?.rules;
  *   - flat['jsx-runtime']
  * - `eslint-plugin-react-hooks` with:
  *   - recommended rules
+ *   - compiler rules (if `true` is provided)
+ *
+ * @param reactCompiler enable the react compiler eslint rules
  */
-export const react: Linter.Config[] = [
-  {
-    name: `${BASE_NAME}/react`,
-    files: JSX_FILES,
-    settings: {
-      react: {
-        version: "detect",
+export const react = (reactCompiler?: boolean): Linter.Config[] => {
+  return [
+    {
+      ...reactPlugin.configs.flat.recommended,
+      name: `${BASE_NAME}/react`,
+      files: JSX_FILES,
+      rules: {
+        ...reactPlugin.configs.flat.recommended?.rules,
+        ...reactPlugin.configs.flat["jsx-runtime"]?.rules,
       },
     },
-    plugins: {
-      ...reactPlugins,
-      "react-hooks": reactHooksPlugin,
+    {
+      ...reactHooksPlugin.configs.flat.recommended,
+      name: `${BASE_NAME}/react-hooks`,
+      rules: {
+        ...(reactCompiler && reactHooksPlugin.configs.flat.recommended.rules),
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": [
+          "error",
+          {
+            additionalHooks: "(useIsomorphicLayoutEffect)",
+          },
+        ],
+      },
     },
-    rules: {
-      ...recommendedRules,
-      ...jsxRuntimeRules,
-      ...reactHooksPlugin.configs.recommended.rules,
-
-      "react-hooks/exhaustive-deps": [
-        "error",
-        {
-          additionalHooks: "(useIsomorphicLayoutEffect)",
-        },
-      ],
-    },
-  },
-];
+  ];
+};

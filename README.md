@@ -23,10 +23,22 @@ export default defineConfig([
   ...configs.frontend("jest"),
 ]);
 
+// somewhat strict type checking with react compiler
+export default defineConfig([
+  gitignore(import.meta.url),
+  ...configs.frontend("jest", true),
+]);
+
 // or with vitest
 // export default defineConfig(
 //   gitignore(import.meta.url),
 //   ...configs.frontend("vitest")
+// );
+
+// or with vitest and react compiler
+// export default defineConfig(
+//   gitignore(import.meta.url),
+//   ...configs.frontend("vitest", true)
 // );
 ```
 
@@ -41,10 +53,22 @@ export default defineConfig([
   ...configs.frontendTypeChecking(import.meta.dirname, "jest"),
 ]);
 
+// strict type checking with react compiler
+export default defineConfig([
+  gitignore(import.meta.url),
+  ...configs.frontendTypeChecking(import.meta.dirname, "jest", true),
+]);
+
 // or with vitest
 // export default defineConfig(
 //   gitignore(import.meta.url),
 //   ...configs.frontendTypeChecking(import.meta.dirname, "vitest")
+// );
+
+// or with vitest and react compiler
+// export default defineConfig(
+//   gitignore(import.meta.url),
+//   ...configs.frontendTypeChecking(import.meta.dirname, "vitest", true)
 // );
 ```
 
@@ -60,14 +84,15 @@ import { defineConfig } from "eslint/config";
 // line to enable it in your editor
 // const strict = true || process.env.STRICT_TYPING === 'true';
 const strict = process.env.STRICT_TYPING === "true";
+const reactCompiler = false;
 const frontend = strict
-  ? configs.frontendTypeChecking(import.meta.dirname, "jest")
-  : configs.frontend("jest");
+  ? configs.frontendTypeChecking(import.meta.dirname, "jest", reactCompiler)
+  : configs.frontend("jest", reactCompiler);
 
 // or with vitest
 // const frontend = strict
-//   ? configs.frontendTypeChecking(import.meta.dirname, "vitest")
-//   : configs.frontend("vitest");
+//   ? configs.frontendTypeChecking(import.meta.dirname, "vitest", reactCompiler)
+//   : configs.frontend("vitest", reactCompiler);
 export default defineConfig([gitignore(import.meta.url), ...frontend]);
 ```
 
@@ -259,7 +284,10 @@ This enables the `eslint-plugin-react` and `eslint-plugin-react-hooks`:
 import { configs } from "@mlaursen/eslint-config";
 import { defineConfig } from "eslint/config";
 
-export default defineConfig(configs.react);
+export default defineConfig(configs.react());
+
+// or with the react compiler rules enabled
+export default defineConfig(configs.react(true));
 ```
 
 ### jsxA11y
@@ -286,21 +314,42 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig(configs.frontend("jest"));
 
+// or with the react compiler rules enabled
+export default defineConfig(configs.frontend("jest", true));
+
 // or with vitest
 export default defineConfig(configs.frontend("vitest"));
+
+// or with the react compiler rules enabled
+export default defineConfig(configs.frontend("vitest", true));
 ```
 
 ### frontendTypeChecking
 
 Same as the [frontend](#frontend), but enables the strict type checking.
 
-```js
+```ts
 // @ts-check
 import { configs } from "@mlaursen/eslint-config";
 import { defineConfig } from "eslint/config";
 
-export default defineConfig(configs.frontendTypeChecking(import.meta.dirname, "jest"));
+export default defineConfig(
+  configs.frontendTypeChecking(import.meta.dirname, "jest")
+);
+
+// or with the react compiler rules enabled
+export default defineConfig(
+  configs.frontendTypeChecking(import.meta.dirname, "jest"),
+  true
+);
 
 // or with vitest
-export default defineConfig(configs.frontendTypeChecking(import.meta.dirname, "vitest"));
+export default defineConfig(
+  configs.frontendTypeChecking(import.meta.dirname, "vitest")
+);
+// or with the react compiler rules enabled
+export default defineConfig(
+  configs.frontendTypeChecking(import.meta.dirname, "vitest"),
+  true
+);
 ```

@@ -14,13 +14,18 @@ import { typescript, typescriptTypeChecking } from "./typescript.js";
  * export default defineConfig([
  *   gitignore(import.meta.url),
  *   ...configs.frontend("jest")
+ *   // ...configs.frontend("jest", true)
  *   // ...configs.frontend("vitest")
+ *   // ...configs.frontend("vitest", true)
  * ]);
  * ```
  */
-export const frontend = (testFramework: TestFramework): Linter.Config[] => [
+export const frontend = (
+  testFramework: TestFramework,
+  reactCompiler?: boolean
+): Linter.Config[] => [
   ...typescript,
-  ...react,
+  ...react(reactCompiler),
   ...jsxA11y,
   ...testing(testFramework),
   ...testingLibraryReact,
@@ -35,16 +40,19 @@ export const frontend = (testFramework: TestFramework): Linter.Config[] => [
  * export default defineConfig([
  *   gitignore(import.meta.url),
  *   ...configs.frontendTypeChecking(import.meta.dirname, "jest")
+ *   // ...configs.frontendTypeChecking(import.meta.dirname, "jest", true)
  *   // ...configs.frontendTypeChecking(import.meta.dirname, "vitest"),
+ *   // ...configs.frontendTypeChecking(import.meta.dirname, "vitest", true),
  * ]);
  * ```
  */
 export const frontendTypeChecking = (
   tsconfigRootDir: string,
-  testFramework: TestFramework
+  testFramework: TestFramework,
+  reactCompiler?: boolean
 ): Linter.Config[] => [
   ...typescriptTypeChecking(tsconfigRootDir),
-  ...react,
+  ...react(reactCompiler),
   ...jsxA11y,
   ...testing(testFramework),
   ...testingLibraryReact,
