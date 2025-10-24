@@ -98,8 +98,8 @@ export default defineConfig([gitignore(import.meta.url), ...frontend]);
 
 ## Next.js Setup
 
-This is no longer included in this eslint-config since it requires the eslint plugin to be installed
-in the project to work. Here are the setup steps:
+This is no longer included in this eslint-config since it requires the eslint
+plugin to be installed in the project to work. Here are the setup steps:
 
 ```sh
 npm install -D @eslint/eslintrc @next/eslint-plugin-next
@@ -152,9 +152,10 @@ pnpm add -D @eslint/eslintrc @next/eslint-plugin-next
 I normally just use the `frontend` or `frontendTypeChecking` configs, but the
 others can be used individually if needed.
 
-<!--toc:start-->
+<!-- toc -->
 
 - [base](#base)
+- [scripts](#scripts)
 - [typescript](#typescript)
 - [typescriptTypeChecking](#typescripttypechecking)
 - [testing](#testing)
@@ -168,7 +169,7 @@ others can be used individually if needed.
 - [frontend](#frontend)
 - [frontendTypeChecking](#frontendtypechecking)
 
-<!--toc:end-->
+<!-- tocstop -->
 
 ### base
 
@@ -182,6 +183,18 @@ import { configs } from "@mlaursen/eslint-config";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig(configs.base);
+```
+
+### scripts
+
+The scripts config is used to allow `console.log()` functions in `scripts/**`:
+
+```js
+// @ts-check
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
+
+export default defineConfig([...configs.base, ...configs.scripts]);
 ```
 
 ### typescript

@@ -3,6 +3,7 @@ import { frontend, frontendTypeChecking } from "./frontend.js";
 import { gitignore } from "./gitignore.js";
 import { jsxA11y } from "./jsxA11y.js";
 import { react } from "./react.js";
+import { scripts } from "./scripts.js";
 import { testingLibraryDom, testingLibraryReact } from "./testing-library.js";
 import { jest, jestDom, testing, vitest } from "./testing.js";
 import { typescript, typescriptTypeChecking } from "./typescript.js";
@@ -21,6 +22,7 @@ export const configs = {
   testingLibraryReact,
   frontend,
   frontendTypeChecking,
+  scripts,
   jsxA11y,
   testing,
   vitest,
