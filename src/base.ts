@@ -5,9 +5,10 @@ import { BASE_NAME, DEV_WARNING_PROD_ERROR } from "./constants.js";
 /**
  * @example
  * ```js
- * import { config, configs } from "@mlaursen/eslint-config";
+ * import { configs } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(...configs.base);
+ * export default defineConfig(configs.base);
  * ```
  */
 export const base: Linter.Config[] = [

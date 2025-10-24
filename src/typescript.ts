@@ -69,9 +69,13 @@ const customTypescript: Linter.Config[] = [
 /**
  * @example
  * ```ts
- * import { config, configs, gitignore } from "@mlaursen/eslint-config";
+ * import { configs, gitignore } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(gitignore(import.meta.url), ...configs.typescript);
+ * export default defineConfig([
+ *   gitignore(import.meta.url),
+ *   ...configs.typescript,
+ * ]);
  * ```
  */
 export const typescript: Linter.Config[] = [
@@ -84,12 +88,13 @@ export const typescript: Linter.Config[] = [
  * @example
  * ```ts
  * // @ts-check
- * import { config, configs, gitignore } from "@mlaursen/eslint-config";
+ * import { configs, gitignore } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(
+ * export default defineConfig([
  *   gitignore(import.meta.url),
  *   ...configs.typescriptTypeChecking(import.meta.dirname)
- * );
+ * ]);
  * ```
  */
 export const typescriptTypeChecking = (

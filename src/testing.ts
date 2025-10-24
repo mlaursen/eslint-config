@@ -9,9 +9,10 @@ export type TestFramework = "jest" | "vitest";
 /**
  * @example
  * ```ts
- * import { config, configs } from "@mlaursen/eslint-config";
+ * import { configs } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(...configs.vitest);
+ * export default defineConfig(configs.vitest);
  * ```
  */
 export const vitest: Linter.Config[] = [
@@ -39,9 +40,10 @@ export const vitest: Linter.Config[] = [
 /**
  * @example
  * ```ts
- * import { config, configs } from "@mlaursen/eslint-config";
+ * import { configs } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(...configs.jest);
+ * export default defineConfig(configs.jest);
  * ```
  */
 export const jest: Linter.Config[] = [
@@ -55,9 +57,13 @@ export const jest: Linter.Config[] = [
 /**
  * @example
  * ```ts
- * import { config, configs } from "@mlaursen/eslint-config";
+ * import { configs } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(...configs.jest, ...configs.jestDom);
+ * export default defineConfig([
+ *   ...configs.jest,
+ *   ...configs.jestDom,
+ * ]);
  * ```
  */
 export const jestDom: Linter.Config[] = [
@@ -71,12 +77,13 @@ export const jestDom: Linter.Config[] = [
 /**
  * @example
  * ```ts
- * import { config, configs } from "@mlaursen/eslint-config";
+ * import { configs } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(...configs.testing("jest"));
+ * export default defineConfig(configs.testing("jest"));
  *
  * // or
- * export default config(...configs.testing("vitest"));
+ * export default defineConfig(configs.testing("vitest"));
  * ```
  */
 export const testing = (framework: TestFramework): Linter.Config[] => {

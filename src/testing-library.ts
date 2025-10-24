@@ -5,14 +5,15 @@ import { BASE_NAME, TEST_FILES } from "./constants.js";
 /**
  * @example
  * ```ts
- * import { configs, defineConfig } from "@mlaursen/eslint-config";
+ * import { configs } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default defineConfig(
+ * export default defineConfig([
  *   ...configs.react,
  *   ...configs.jest,
  *   ...configs.jestDom,
  *   ...configs.testingLibraryReact
- * );
+ * ]);
  * ```
  *
  * NOTE: Only choose this or the {@link testingLibraryDom}. Do not use
@@ -31,11 +32,11 @@ export const testingLibraryReact: Linter.Config[] = [
  * ```ts
  * import { configs, defineConfig } from "@mlaursen/eslint-config";
  *
- * export default defineConfig(
+ * export default defineConfig([
  *   ...configs.jest,
  *   ...configs.jestDom,
  *   ...configs.testingLibraryDom
- * );
+ * ]);
  * ```
  *
  * NOTE: Only choose this or the {@link testingLibraryReact}. Do not use

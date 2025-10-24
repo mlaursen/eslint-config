@@ -8,13 +8,14 @@ import { typescript, typescriptTypeChecking } from "./typescript.js";
 /**
  * @example
  * ```ts
- * import { config, configs, gitignore } from "@mlaursen/eslint-config";
+ * import { configs, gitignore } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(
+ * export default defineConfig([
  *   gitignore(import.meta.url),
  *   ...configs.frontend("jest")
  *   // ...configs.frontend("vitest")
- * );
+ * ]);
  * ```
  */
 export const frontend = (testFramework: TestFramework): Linter.Config[] => [
@@ -28,13 +29,14 @@ export const frontend = (testFramework: TestFramework): Linter.Config[] => [
 /**
  * @example
  * ```ts
- * import { config, configs, gitignore } from "@mlaursen/eslint-config";
+ * import { configs, gitignore } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default config(
+ * export default defineConfig([
  *   gitignore(import.meta.url),
  *   ...configs.frontendTypeChecking(import.meta.dirname, "jest")
  *   // ...configs.frontendTypeChecking(import.meta.dirname, "vitest"),
- * );
+ * ]);
  * ```
  */
 export const frontendTypeChecking = (

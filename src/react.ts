@@ -12,9 +12,10 @@ const jsxRuntimeRules = flat["jsx-runtime"]?.rules;
 /**
  * @example
  * ```ts
- * import { configs, defineConfig } from "@mlaursen/eslint-config";
+ * import { configs } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default defineConfig(...configs.react);
+ * export default defineConfig(configs.react);
  * ```
  *
  * Enables:

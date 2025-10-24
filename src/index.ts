@@ -1,4 +1,3 @@
-import { defineConfig } from "eslint/config";
 import { base } from "./base.js";
 import { frontend, frontendTypeChecking } from "./frontend.js";
 import { gitignore } from "./gitignore.js";
@@ -9,7 +8,7 @@ import { jest, jestDom, testing, vitest } from "./testing.js";
 import { typescript, typescriptTypeChecking } from "./typescript.js";
 
 export * from "./constants.js";
-export { defineConfig, gitignore };
+export { gitignore };
 
 export const configs = {
   base,
@@ -28,7 +27,6 @@ export const configs = {
 } as const;
 
 export default {
-  defineConfig,
   configs,
   gitignore,
 };

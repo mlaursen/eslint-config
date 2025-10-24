@@ -14,13 +14,14 @@ Then create an `eslint.config.mjs` with one of the following:
 
 ```js
 // @ts-check
-import { defineConfig, configs, gitignore } from "@mlaursen/eslint-config";
+import { configs, gitignore } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
 // somewhat strict type checking
-export default defineConfig(
+export default defineConfig([
   gitignore(import.meta.url),
-  ...configs.frontend("jest")
-);
+  ...configs.frontend("jest"),
+]);
 
 // or with vitest
 // export default defineConfig(
@@ -31,13 +32,14 @@ export default defineConfig(
 
 ```js
 // @ts-check
-import { defineConfig, configs, gitignore } from "@mlaursen/eslint-config";
+import { configs, gitignore } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
 // strict type checking
-export default defineConfig(
+export default defineConfig([
   gitignore(import.meta.url),
-  ...configs.frontendTypeChecking(import.meta.dirname, "jest")
-);
+  ...configs.frontendTypeChecking(import.meta.dirname, "jest"),
+]);
 
 // or with vitest
 // export default defineConfig(
@@ -48,7 +50,8 @@ export default defineConfig(
 
 ```js
 // @ts-check
-import { defineConfig, configs, gitignore } from "@mlaursen/eslint-config";
+import { configs, gitignore } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
 // NOTE: This is recommended for strict type checking. Callable as:
 // `cross-env STRICT_TYPING=true eslint "**/*.{ts,tsx,mts,mtsx,js,jsx,mjs,cjs}`
@@ -65,12 +68,8 @@ const frontend = strict
 // const frontend = strict
 //   ? configs.frontendTypeChecking(import.meta.dirname, "vitest")
 //   : configs.frontend("vitest");
-export default defineConfig(gitignore(import.meta.url), ...frontend);
+export default defineConfig([gitignore(import.meta.url), ...frontend]);
 ```
-
-The `defineConfig` export is the `@eslintjs/config.defineConfig()` function to
-provide type definitions and `gitignore` automatically ignores files from
-linting based on your `.gitignore` rules.
 
 ## Next.js Setup
 
@@ -86,7 +85,8 @@ pnpm add -D @eslint/eslintrc @next/eslint-plugin-next
 ```diff
  // @ts-check
 +import { FlatCompat } from "@eslint/eslintrc";
- import { defineConfig, configs, gitignore } from "@mlaursen/eslint-config";
+ import { configs, gitignore } from "@mlaursen/eslint-config";
+ import { defineConfig } from "eslint/config";
 
 +const compat = new FlatCompat({
 +  baseDirectory: import.meta.dirname,
@@ -94,15 +94,15 @@ pnpm add -D @eslint/eslintrc @next/eslint-plugin-next
 +
 
  // somewhat strict type checking
- export default defineConfig(
+ export default defineConfig([
    gitignore(import.meta.url),
 +  ...compat.config({
 +    extends: ["plugin:@next/next/recommended"],
 +    // or with core-web-vitals
 +    // extends: ["plugin:@next/next/core-web-vitals"],
 +  }),
-   ...configs.frontend("jest")
- );
+   ...configs.frontend("jest"),
+ ]);
 ```
 
 ## Configs
@@ -136,9 +136,10 @@ The base config is automatically used by the [typescript](#typescript) config an
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.base);
+export default defineConfig(configs.base);
 ```
 
 ### typescript
@@ -150,9 +151,10 @@ behavior and disabled strict rules in test files.
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.typescript);
+export default defineConfig(configs.typescript);
 ```
 
 ### typescriptTypeChecking
@@ -163,10 +165,11 @@ This is the same as the [typescript](#typescript) config but also includes the `
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
 export default defineConfig(
-  ...configs.typescriptTypeChecking(import.meta.dirname)
+  configs.typescriptTypeChecking(import.meta.dirname)
 );
 ```
 
@@ -176,12 +179,13 @@ This enables the [jest](#jest) or [vitest](#vitest) rules along with [jestDom](#
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.testing("jest"));
+export default defineConfig(configs.testing("jest"));
 
 // or vitest
-export default defineConfig(...configs.testing("vitest"));
+export default defineConfig(configs.testing("vitest"));
 ```
 
 ### jest
@@ -190,9 +194,10 @@ This only enables the `eslint-plugin-jest.configs['flat/recommended]` rules on t
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.jest);
+export default defineConfig(configs.jest);
 ```
 
 ### jestDom
@@ -201,9 +206,10 @@ This only enables the `eslint-plugin-jest-dom.configs['flat/recommended]` rules 
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.jestDom);
+export default defineConfig(configs.jestDom);
 ```
 
 ### vitest
@@ -216,16 +222,18 @@ This enables the `eslint-plugin-testing-library/.configs["flat/react]` plugin an
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.vitest);
+export default defineConfig(configs.vitest);
 ```
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.testingLibraryReact);
+export default defineConfig(configs.testingLibraryReact);
 ```
 
 ### testingLibraryDom
@@ -236,9 +244,10 @@ This enables the `eslint-plugin-testing-library/.configs["flat/dom]` plugin and 
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.testingLibraryDom);
+export default defineConfig(configs.testingLibraryDom);
 ```
 
 ### react
@@ -247,9 +256,10 @@ This enables the `eslint-plugin-react` and `eslint-plugin-react-hooks`:
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.react);
+export default defineConfig(configs.react);
 ```
 
 ### jsxA11y
@@ -258,9 +268,10 @@ This enables `eslint-plugin-jsx-a11y`:
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.jsxA11y);
+export default defineConfig(configs.jsxA11y);
 ```
 
 ### frontend
@@ -270,12 +281,13 @@ This is my normal frontend repo setup with `react`, `jsxA11y`, `jest` or
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.frontend("jest"));
+export default defineConfig(configs.frontend("jest"));
 
 // or with vitest
-export default defineConfig(...configs.frontend("vitest"));
+export default defineConfig(configs.frontend("vitest"));
 ```
 
 ### frontendTypeChecking
@@ -284,10 +296,11 @@ Same as the [frontend](#frontend), but enables the strict type checking.
 
 ```js
 // @ts-check
-import { defineConfig, configs } from "@mlaursen/eslint-config";
+import { configs } from "@mlaursen/eslint-config";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig(...configs.frontendTypeChecking(import.meta.dirname, "jest"));
+export default defineConfig(configs.frontendTypeChecking(import.meta.dirname, "jest"));
 
 // or with vitest
-export default defineConfig(...configs.frontendTypeChecking(import.meta.dirname, "vitest"));
+export default defineConfig(configs.frontendTypeChecking(import.meta.dirname, "vitest"));
 ```

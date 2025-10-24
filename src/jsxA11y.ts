@@ -5,9 +5,10 @@ import { BASE_NAME, JSX_FILES, TEST_FILES } from "./constants.js";
 /**
  * @example
  * ```ts
- * import { configs, defineConfig } from "@mlaursen/eslint-config";
+ * import { configs } from "@mlaursen/eslint-config";
+ * import { defineConfig } from "eslint/config";
  *
- * export default defineConfig(...configs.jsxA11y);
+ * export default defineConfig(configs.jsxA11y);
  * ```
  */
 export const jsxA11y: Linter.Config[] = [
