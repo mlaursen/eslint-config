@@ -107,6 +107,23 @@ yarn add -D @eslint/eslintrc @next/eslint-plugin-next
 pnpm add -D @eslint/eslintrc @next/eslint-plugin-next
 ```
 
+### Next.js >= 16
+
+```diff
+ import { configs, gitignore } from "@mlaursen/eslint-config";
+ import { defineConfig } from "eslint/config";
++import nextPlugin from "@next/eslint-plugin-next";
+
+ // somewhat strict type checking
+ export default defineConfig([
++  nextPlugin.configs["core-web-vitals"],
+   gitignore(import.meta.url),
+   ...configs.frontend("jest"),
+ ]);
+```
+
+### Next.js < 16
+
 ```diff
  // @ts-check
 +import { FlatCompat } from "@eslint/eslintrc";
