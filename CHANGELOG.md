@@ -1,5 +1,65 @@
 # @mlaursen/eslint-config
 
+## 10.0.0
+
+### Major Changes
+
+- ===
+  Breaking Changes
+  - Removed the default export
+  - Removed the `defineConfig` re-export from `eslint/config`.
+
+    ```diff
+    -import { configs, defineConfig } from "@mlaursen/eslint-config";
+    +import { configs } from "@mlaursen/eslint-config";
+    +import { defineConfig } from "eslint/config";
+
+    -export default defineConfig(
+    +export default defineConfig([
+       gitignore(import.meta.url),
+       ...configs.frontend("jest")
+    -)
+    +])
+    ```
+
+  - Bumped `eslint-plugin-react-hooks` to the latest. The `react` config is now a
+    function
+
+    ```diff
+     import { configs } from "@mlaursen/eslint-config";
+     import { defineConfig } from "eslint/config";
+
+     export default defineConfig([
+       gitignore(import.meta.url),
+    -  ...configs.react,
+    +  ...configs.react(),
+     ]);
+    ```
+
+  ===
+  Features
+  - Bumped dependencies to latest
+  - Bumped `eslint-plugin-react-hooks` to v7 which supports the react compiler
+    rules. Enable the react compiler flag to use the new rules
+
+    ```diff
+     // @ts-check
+     import { configs, gitignore, type TestFramework } from "@mlaursen/eslint-config";
+     import { defineConfig } from "eslint/config";
+
+     const strict = process.env.STRICT_TYPING === "true";
+     const testFramework: TestFramework = "jest";
+    +const reactCompiler = true;
+     const frontend = strict
+    -  ? configs.frontendTypeChecking(import.meta.dirname, testFramework)
+    -  : configs.frontend(testFramework);
+    +  ? configs.frontendTypeChecking(import.meta.dirname, testFramework, reactCompiler)
+    +  : configs.frontend(testFramework, reactCompiler);
+
+     export default defineConfig([gitignore(import.meta.url), ...frontend]);
+
+    ```
+
 ## 9.0.3
 
 ### Patch Changes
