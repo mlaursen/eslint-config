@@ -20,7 +20,6 @@ export const vitest: Linter.Config[] = [
     name: `${BASE_NAME}/vitest`,
     files: TEST_FILES,
     plugins: {
-      // @ts-expect-error Invalid Linter.Config type
       vitest: vitestPlugin,
     },
     rules: {
