@@ -1,4 +1,6 @@
-# eslint-config
+# @mlaursen/eslint-config
+
+## This project has been  moved to https://github.com/mlaursen/npm-packages/packages/eslint-config
 
 A reusable eslint config that I use for most of my projects.
 
