@@ -1,5 +1,11 @@
 # @mlaursen/eslint-config
 
+## 10.0.2
+
+### Patch Changes
+
+- Bumped eslint rule dependencies to latest.
+
 ## 10.0.1
 
 ### Patch Changes
